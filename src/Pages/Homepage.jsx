@@ -6,7 +6,8 @@ export default function Homepage() {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen mt-10">
-        <img src="../../public/images/hero-images.svg" alt="hero" className="min-xl:w-96 mb-10" />
+        <img src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9sb2dvLnBuZyIsImlhdCI6MTcxNjM4NzkzNSwiZXhwIjoxNzQ3OTIzOTM1fQ.n5SAku3xSnxP5zkzChHDy2ZtGS2q6qfci9LbjbMF8kA&t=2024-05-22T14%3A25%3A35.902Z" alt="logos" className="min-xl:w-96 w-32 mb-8" />
+        <img src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/hero-images.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9oZXJvLWltYWdlcy5wbmciLCJpYXQiOjE3MTYzODcxOTQsImV4cCI6MTc0NzkyMzE5NH0.j4hVeEwqOKmxzr7QqJIZzMYqWqkiGeH92hRC8wG3ZKc&t=2024-05-22T14%3A13%3A15.119Z" alt="hero" className="min-xl:w-96 mb-10" />
         <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-amber-900 to-amber-600">
           Undangan eWoh Digital
         </h1>
