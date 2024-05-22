@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "/public/images/logos.png";
 
 export default function NavbarDashboard() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function NavbarDashboard() {
       className="w-full p-5 shadow bg-slate-100 flex items-center justify-between"
     >
       <div className="logo">
-        <h1 className="font-bold text-xl">Super e-Woh</h1>
+        <img className="h-12 w-12" src={logo} alt="logos" />
       </div>
       <div className="list-featured flex items-center gap-3 border rounded-md py-3 px-5 bg-white shadow-sm">
         <div className="say-name gap-1">

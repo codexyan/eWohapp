@@ -88,7 +88,7 @@ const DashboardPage = () => {
             </button>
             <Link
               to="/"
-              className="border rounded px-4 bg-white hover:bg-slate-100 text-center"
+              className="border rounded px-4 bg-white hover:bg-slate-100 flex justify-center items-center"
             >
               Lihat Undangan
             </Link>
@@ -114,7 +114,7 @@ const DashboardPage = () => {
                     <td className="py-2 px-4">{visitor.name}</td>
                     <td className="py-2 px-4">{visitor.address}</td>
                     <td className="py-2 px-4">{visitor.phonenumber}</td>
-                    <td className="py-2 px-4">
+                    <td className="py-2 px-4 flex flex-wrap gap-2">
                       {/* Tombol Aksi */}
                       <button
                         onClick={() => handleDeleteGuest(visitor.id)}
