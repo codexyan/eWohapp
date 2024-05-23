@@ -38,15 +38,15 @@ export default function Homepage() {
           <FaWhatsapp className="text-3xl" />
           <p>Hubungi Kami</p>
         </Link>
-        <div className="flex flex-row gap-2 mt-3 other-cta">
-          <Link to="/comingsoon" className="text-sm font-semibold text-amber-700">Lihat Undangan</Link>
+        <div className="flex flex-row items-center gap-2 mt-3 other-cta">
+          <Link to="/comingsoon" className="text-xs font-semibold text-amber-700">Lihat Undangan</Link>
           <p className="text-sm text-slate-200">|</p>
-          <Link to="/login" className="flex flex-row items-center gap-1 text-sm font-semibold hover:font-bold text-amber-700">
+          <Link to="/login" className="flex flex-row items-center gap-1 text-xs font-semibold hover:font-bold text-amber-700">
             <RiAccountPinCircleLine />
             Login e-Wohku
           </Link>
         </div>
-        <p className="my-10 text-sm text-center text-slate-400">
+        <p className="bottom-0 my-10 text-sm text-center text-slate-400">
           Copyright © 2024 | eWohapp All Rights Reserved
         </p>
       </div>

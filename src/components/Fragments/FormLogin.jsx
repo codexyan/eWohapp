@@ -45,7 +45,7 @@ export default function FormLogin() {
     <div>
       <form onSubmit={handleLogin}>
         {loginFailed && (
-          <p className="text-red-700 text-sm text-center font-medium">
+          <p className="text-sm font-medium text-center text-red-700">
             {loginFailed}
           </p>
         )}
