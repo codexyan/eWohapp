@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import DarkModeContextProvider from "./context/DarkMode.jsx";
 import DashboardPage from "./Pages/Dashboard.jsx";
+import ComingSoonPage from "./Pages/ComingSoon.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardPage />
-  }
+    element: <DashboardPage />,
+  },
+  {
+    path: "/comingsoon",
+    element: <ComingSoonPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
