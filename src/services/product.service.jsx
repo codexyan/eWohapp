@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const apiBaseURL = "https://fakestoreapi.com/products";
 
 export const fecthData = async (url) => {

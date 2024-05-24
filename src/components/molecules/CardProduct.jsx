@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Elements/Button/Button";
+import Button from "../atoms/Button/Button";
 import { Link } from "react-router-dom";
 
 // Redux

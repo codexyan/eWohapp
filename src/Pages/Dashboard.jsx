@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLogin } from "../hooks/useLogin";
-import { createClient } from "@supabase/supabase-js";
-import NavbarDashboard from "../components/Layouts/NavbarDashboard";
 import { Link } from "react-router-dom";
+import { supabase } from "../supabaseClient";
 
-const supabaseUrl = "https://qmpirqfxudgdyiqlcqvj.supabase.co";
-const supabaseAnonKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtcGlycWZ4dWRnZHlpcWxjcXZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYxNjkyMDIsImV4cCI6MjAzMTc0NTIwMn0.XfjDzex5jOY4bjd7sCuLPWhJsJyUfsWJUu9Xm68xv88";
+import { IoMdAdd } from "react-icons/io";
+import { LuSend } from "react-icons/lu";
+import NavbarDashboard from "../components/organisms/NavbarDashboard";
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Components
 
 const DashboardPage = () => {
-  const username = useLogin();
-
   // State untuk menampilkan daftar tamu
   const [visitors, setVisitors] = useState([]);
 
@@ -76,53 +72,57 @@ const DashboardPage = () => {
   return (
     <>
       <NavbarDashboard />
-      <div className="container mx-auto p-4">
+      <div className="container p-4 mx-auto">
         <div className="mt-8">
-          <h1 className="text-2xl font-bold mb-4">Daftar Tamu Undangan</h1>
-          <div className="flex justify-start mb-4 gap-3">
+          <h1 className="mb-4 max-sm:text-xl text-2xl font-bold">
+            Daftar Tamu Undangan
+          </h1>
+          <div className="flex justify-start gap-3 mb-4">
             <button
               onClick={() => setShowAddGuest(true)}
-              className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
+              className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 text-sm flex items-center gap-2"
             >
+              <IoMdAdd />
               Tambahkan Tamu
             </button>
             <Link
               to="/"
-              className="border rounded px-4 bg-white hover:bg-slate-100 flex justify-center items-center"
+              className=" px-4 bg-white border rounded hover:bg-slate-100 flex items-center gap-2"
             >
+              <LuSend />
               Lihat Undangan
             </Link>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-200">
               <thead>
-                <tr className="bg-gray-100 border-b border-gray-200 text-center">
-                  <th className="py-2 px-4">No.</th>
-                  <th className="py-2 px-4">Nama</th>
-                  <th className="py-2 px-4">Alamat</th>
-                  <th className="py-2 px-4">Nomor Telepon</th>
-                  <th className="py-2 px-4">Action</th>
+                <tr className="text-center bg-gray-100 border-b border-gray-200 max-sm:text-sm">
+                  <th className="px-4 py-2">No.</th>
+                  <th className="px-4 py-2">Nama</th>
+                  <th className="px-4 py-2">Alamat</th>
+                  <th className="px-4 py-2">Nomor Telepon</th>
+                  <th className="px-4 py-2">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {visitors.map((visitor, index) => (
                   <tr
                     key={visitor.id}
-                    className="border-b border-gray-200 text-center"
+                    className="text-center border-b border-gray-200 max-sm:text-xs"
                   >
-                    <td className="py-2 px-4">{index + 1}</td>
-                    <td className="py-2 px-4">{visitor.name}</td>
-                    <td className="py-2 px-4">{visitor.address}</td>
-                    <td className="py-2 px-4">{visitor.phonenumber}</td>
-                    <td className="py-2 px-4 flex flex-wrap gap-2">
+                    <td className="px-4 py-2">{index + 1}</td>
+                    <td className="px-4 py-2">{visitor.name}</td>
+                    <td className="px-4 py-2">{visitor.address}</td>
+                    <td className="px-4 py-2">{visitor.phonenumber}</td>
+                    <td className="flex flex-wrap gap-2 px-4 py-2 justify-center">
                       {/* Tombol Aksi */}
                       <button
                         onClick={() => handleDeleteGuest(visitor.id)}
-                        className="mr-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                        className="px-3 py-1 mr-2 text-white bg-red-500 rounded hover:bg-red-600"
                       >
                         Hapus
                       </button>
-                      <button className="mr-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-800">
+                      <button className="px-3 py-1 mr-2 text-white bg-blue-500 rounded hover:bg-blue-800">
                         Kirim Undangan
                       </button>
                     </td>
@@ -135,16 +135,16 @@ const DashboardPage = () => {
 
         {/* Popup Tambah Tamu */}
         {showAddGuest && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-            <div className="bg-white rounded p-8 max-w-md w-full">
-              <h2 className="text-xl font-bold mb-4">Tambahkan Tamu</h2>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div className="w-full max-w-xs p-8 bg-white rounded">
+              <h2 className="mb-4 text-xl font-bold">Tambahkan Tamu</h2>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
                   Nama
                 </label>
                 <input
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   value={newGuestName}
                   onChange={(e) => setNewGuestName(e.target.value)}
                 />
@@ -155,7 +155,7 @@ const DashboardPage = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   value={newGuestAddress}
                   onChange={(e) => setNewGuestAddress(e.target.value)}
                 />
@@ -166,7 +166,7 @@ const DashboardPage = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   value={newGuestPhone}
                   onChange={(e) => setNewGuestPhone(e.target.value)}
                 />
@@ -174,13 +174,13 @@ const DashboardPage = () => {
               <div className="flex justify-end">
                 <button
                   onClick={() => setShowAddGuest(false)}
-                  className="mr-2 bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400"
+                  className="px-4 py-2 mr-2 text-gray-800 bg-gray-300 rounded hover:bg-gray-400"
                 >
                   Batal
                 </button>
                 <button
                   onClick={handleAddGuest}
-                  className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
+                  className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700"
                 >
                   Simpan
                 </button>

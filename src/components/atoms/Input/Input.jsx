@@ -1,8 +1,7 @@
 import React from "react";
 import { forwardRef } from "react";
 
-const Input = forwardRef((props, ref) => {
-  const { type, name, placeholder} = props;
+const Input = forwardRef(({ type, name, placeholder }, ref) => {
   return (
     <div>
       <input

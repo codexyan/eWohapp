@@ -1,21 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 
 import LoginPage from "./Pages/Login.jsx";
 import RegisterPage from "./Pages/Register.jsx";
 import ErrorPage from "./Pages/404.jsx";
-import ProductsPage from "./Pages/Products.jsx";
 import Homepage from "./Pages/Homepage.jsx";
-import ProfilePage from "./Pages/Dashboard.jsx";
+import DashboardPage from "./Pages/Dashboard.jsx";
+import ProductsPage from "./Pages/Products.jsx";
 import DetailProductsPages from "./Pages/DetailProducts.jsx";
 
-// Memanggil store
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import DarkModeContextProvider from "./context/DarkMode.jsx";
-import DashboardPage from "./Pages/Dashboard.jsx";
 import ComingSoonPage from "./Pages/ComingSoon.jsx";
 
 const router = createBrowserRouter([

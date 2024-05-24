@@ -1,12 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import CardProduct from "../components/Fragments/CardProduct";
-import TableCart from "../components/Fragments/TableCart";
-
 // Hooks
 import { getProducts } from "../services/product.service";
-import Navbar from "../components/Layouts/Navbar";
+import Navbar from "../components/organisms/Navbar";
+import TableCart from "../components/molecules/TableCart";
+import CardProduct from "../components/molecules/CardProduct";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);

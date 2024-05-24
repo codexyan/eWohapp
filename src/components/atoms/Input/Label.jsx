@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function Label(props) {
-  const { htmlFor, children } = props;
+export default function Label({ htmlFor, children }) {
   return (
     <label
       htmlFor={htmlFor}

@@ -1,6 +1,7 @@
 import React from "react";
-import AuthLayouts from "../components/Layouts/AuthLayouts";
-import FormRegister from "../components/Fragments/FormRegister";
+import AuthLayouts from "../components/organisms/AuthLayouts";
+import FormRegister from "../components/molecules/FormRegister";
+
 
 export default function RegisterPage() {
   return (

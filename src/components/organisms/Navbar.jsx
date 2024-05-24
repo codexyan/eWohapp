@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
-import Button from "../Elements/Button/Button";
 import { useSelector } from "react-redux";
+import Button from "../atoms/Button/Button";
 
 export default function Navbar() {
   const username = useLogin();

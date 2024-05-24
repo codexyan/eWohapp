@@ -1,24 +1,14 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
-
-import InputForm from "../Elements/Input/InputForm";
-import Button from "../Elements/Button/Button";
 import { login } from "../../services/auth.service";
+import InputForm from "../atoms/Input/InputForm";
+import Button from "../atoms/Button/Button";
 
 export default function FormLogin() {
   const [loginFailed, setLoginFailed] = useState("");
 
   const handleLogin = (event) => {
-    event.preventDefault(); // mencegah refresh otomatis
-
-    // Menyimpan data login ke localStorage
-    // localStorage.setItem("email", event.target.email.value);
-    // localStorage.setItem("password", event.target.password.value);
-    // window.location.href = "/products";
-
-    // console.log(event.target.email.value);
-    // console.log(event.target.password.value);
-    // console.log("login successfully!");
+    event.preventDefault();
 
     const data = {
       username: event.target.username.value,
@@ -64,7 +54,7 @@ export default function FormLogin() {
           type="password"
           placeholder="***"
         />
-        <Button classname="w-full bg-blue-600" type="submit">
+        <Button className="mt-2" type="submit">
           Login
         </Button>
       </form>
