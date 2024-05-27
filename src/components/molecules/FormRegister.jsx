@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../services/auth.service";
-import InputForm from "../atoms/Input/InputForm";
-import Button from "../atoms/Button/Button";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
+import { ref, set } from "firebase/database";
+import {
+  firebaseAuthentication,
+  firebaseDatabase,
+} from "../../config/firebase";
+import { Button, TextField } from "@mui/material";
+
+// import InputForm from "../atoms/Input/InputForm";
+// import Button from "../atoms/Button/Button";
 
 export default function FormRegister() {
   const [formData, setFormData] = useState({
-    fullname: "",
+    fullName: "",
     email: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
   });
 
   const [error, setError] = useState(null);
-  
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -26,57 +35,68 @@ export default function FormRegister() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    register(formData, (status, res) => {
-      if (status) {
-        console.log("Registration successful!", res);
-        navigate("/dashboard");
-      } else {
-        console.error("Registration failed!", res);
-        setError(res);
-      }
-    });
+    const { fullName, email, password, phoneNumber } = formData;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        firebaseAuthentication,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Simpan data pengguna ke database
+      await set(ref(firebaseDatabase, `users/${user.uid}`), {
+        email: email,
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+      });
+
+      // Kirim email verifikasi
+      await sendEmailVerification(user);
+
+      navigate("/login");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit}>
-        <InputForm
-          label="Full Name"
-          name="fullname"
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+        <TextField
+          label="Nama Lengkap"
+          name="fullName"
           type="text"
-          value={formData.fullname}
+          value={formData.fullName}
           onChange={handleInputChange}
-          placeholder="Nama Lengkap"
           required
         />
-        <InputForm
+        <TextField
           label="Email"
           name="email"
           type="email"
-          placeholder="elon@gmail.com"
           value={formData.email}
           onChange={handleInputChange}
           required
         />
-        <InputForm
+        <TextField
           label="Phone Number"
-          name="phone"
-          type="text"
-          placeholder="08XXXXXXXXX"
-          value={formData.phone}
+          name="phoneNumber"
+          type="tel"
+          value={formData.phoneNumber}
           onChange={handleInputChange}
           required
         />
-        <InputForm
+        <TextField
           label="Password"
           name="password"
           type="password"
-          placeholder="***"
           value={formData.password}
           onChange={handleInputChange}
           required
         />
-        <Button classname="mt-2" type="submit">
+        <Button variant="contained" color="primary" type="submit">
           Register
         </Button>
       </form>

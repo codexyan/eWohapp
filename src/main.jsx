@@ -15,6 +15,9 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import DarkModeContextProvider from "./context/DarkMode.jsx";
 import ComingSoonPage from "./Pages/ComingSoon.jsx";
+import Rumah from "./components/Rumah.jsx";
+import Masuk from "./components/Masuk.jsx";
+import Daftar from "./components/Daftar.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
   {
     path: "/comingsoon",
     element: <ComingSoonPage />,
+  },
+  {
+    path: "/rumah",
+    element: <Rumah />,
+  },
+  {
+    path: "/masuk",
+    element: <Masuk />,
+  },
+  {
+    path: "/daftar",
+    element: <Daftar />,
   },
 ]);
 

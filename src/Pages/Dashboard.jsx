@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import supabase  from "../supabaseClient";
 
 import { IoMdAdd } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import NavbarDashboard from "../components/organisms/NavbarDashboard";
-
-// Components
+import { useNavigate } from "react-router-dom";
+import { firebaseAuthentication } from "../config/firebase";
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
+
   // State untuk menampilkan daftar tamu
   const [visitors, setVisitors] = useState([]);
 
@@ -69,25 +71,29 @@ const DashboardPage = () => {
     fetchVisitors();
   };
 
+  const handleLogout = () => {
+    firebaseAuthentication.signOut()
+  };
+
   return (
     <>
       <NavbarDashboard />
       <div className="container p-4 mx-auto">
         <div className="mt-8">
-          <h1 className="mb-4 max-sm:text-xl text-2xl font-bold">
+          <h1 className="mb-4 text-2xl font-bold max-sm:text-xl">
             Daftar Tamu Undangan
           </h1>
           <div className="flex justify-start gap-3 mb-4">
             <button
               onClick={() => setShowAddGuest(true)}
-              className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 text-sm flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-green-600 rounded hover:bg-green-700"
             >
               <IoMdAdd />
               Tambahkan Tamu
             </button>
             <Link
               to="/"
-              className=" px-4 bg-white border rounded hover:bg-slate-100 flex items-center gap-2"
+              className="flex items-center gap-2 px-4 bg-white border rounded hover:bg-slate-100"
             >
               <LuSend />
               Lihat Undangan
@@ -114,7 +120,7 @@ const DashboardPage = () => {
                     <td className="px-4 py-2">{visitor.name}</td>
                     <td className="px-4 py-2">{visitor.address}</td>
                     <td className="px-4 py-2">{visitor.phonenumber}</td>
-                    <td className="flex flex-wrap gap-2 px-4 py-2 justify-center">
+                    <td className="flex flex-wrap justify-center gap-2 px-4 py-2">
                       {/* Tombol Aksi */}
                       <button
                         onClick={() => handleDeleteGuest(visitor.id)}
