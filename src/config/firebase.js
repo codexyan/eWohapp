@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAoKheLdKy-7MhjBM_v6sxHKAC0JMtScSU",
-  authDomain: "projectewoh.firebaseapp.com",
-  projectId: "projectewoh",
-  storageBucket: "projectewoh.appspot.com",
-  messagingSenderId: "1011216721414",
-  appId: "1:1011216721414:web:39d73dbd46c97243dcc587",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
