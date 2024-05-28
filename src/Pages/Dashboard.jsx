@@ -5,11 +5,8 @@ import supabase  from "../supabaseClient";
 import { IoMdAdd } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import NavbarDashboard from "../components/organisms/NavbarDashboard";
-import { useNavigate } from "react-router-dom";
-import { firebaseAuthentication } from "../config/firebase";
 
 const DashboardPage = () => {
-  const navigate = useNavigate();
 
   // State untuk menampilkan daftar tamu
   const [visitors, setVisitors] = useState([]);
@@ -71,10 +68,6 @@ const DashboardPage = () => {
     fetchVisitors();
   };
 
-  const handleLogout = () => {
-    firebaseAuthentication.signOut()
-  };
-
   return (
     <>
       <NavbarDashboard />
@@ -86,14 +79,14 @@ const DashboardPage = () => {
           <div className="flex justify-start gap-3 mb-4">
             <button
               onClick={() => setShowAddGuest(true)}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-green-600 rounded hover:bg-green-700"
+              className="flex items-center gap-2 px-4 py-2 text-xs text-white bg-green-600 rounded hover:bg-green-700"
             >
               <IoMdAdd />
               Tambahkan Tamu
             </button>
             <Link
               to="/"
-              className="flex items-center gap-2 px-4 bg-white border rounded hover:bg-slate-100"
+              className="flex items-center gap-2 px-4 bg-white border rounded text-sm hover:bg-slate-100"
             >
               <LuSend />
               Lihat Undangan
