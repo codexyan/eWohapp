@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import supabase  from "../supabaseClient";
+import supabase from "../supabaseClient";
 
 import { IoMdAdd } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import NavbarDashboard from "../components/organisms/NavbarDashboard";
+import { Button } from "@mui/material";
 
 const DashboardPage = () => {
-
   // State untuk menampilkan daftar tamu
   const [visitors, setVisitors] = useState([]);
 
@@ -85,7 +85,7 @@ const DashboardPage = () => {
               Tambahkan Tamu
             </button>
             <Link
-              to="/"
+              to="/invitation/nandary"
               className="flex items-center gap-2 px-4 bg-white border rounded text-sm hover:bg-slate-100"
             >
               <LuSend />
@@ -115,15 +115,28 @@ const DashboardPage = () => {
                     <td className="px-4 py-2">{visitor.phonenumber}</td>
                     <td className="flex flex-wrap justify-center gap-2 px-4 py-2">
                       {/* Tombol Aksi */}
-                      <button
+                      <Button
+                        variant="contained"
+                        color="error"
                         onClick={() => handleDeleteGuest(visitor.id)}
-                        className="px-3 py-1 mr-2 text-white bg-red-500 rounded hover:bg-red-600"
+                        className="px-3 py-1 mr-2 text-white rounded"
                       >
                         Hapus
-                      </button>
-                      <button className="px-3 py-1 mr-2 text-white bg-blue-500 rounded hover:bg-blue-800">
+                      </Button>
+                      <Link
+                        to={`/invitation/nandary/?to=${encodeURIComponent(
+                          visitor.name
+                        )}`}
+                        className="px-3 py-1 text-white bg-blue-500 rounded hover:bg-blue-800"
+                      >
+                        Preview
+                      </Link>
+                      <Link
+                        to=""
+                        className="px-3 py-1 text-white bg-orange-500 rounded hover:bg-orange-800"
+                      >
                         Kirim Undangan
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

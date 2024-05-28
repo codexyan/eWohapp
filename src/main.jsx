@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import DarkModeContextProvider from "./context/DarkMode.jsx";
 import ComingSoonPage from "./Pages/ComingSoon.jsx";
+import SendInvitationPage from "./Pages/SendInvitation.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
     path: "/comingsoon",
     element: <ComingSoonPage />,
   },
+  {
+    path: "/invitation/nandary",
+    element: <SendInvitationPage />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
