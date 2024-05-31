@@ -17,6 +17,11 @@ import DarkModeContextProvider from "./context/DarkMode.jsx";
 import ComingSoonPage from "./Pages/ComingSoon.jsx";
 import SendInvitationPage from "./Pages/SendInvitation.jsx";
 
+// AOS Animation
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
+
 const router = createBrowserRouter([
   {
     path: "/",
