@@ -35,10 +35,8 @@ export default function SendInvitationPage() {
                 <h1 className="text-white font-righteous">
                   We Invite You To Our Wedding
                 </h1>
-                <div className="couple font-playfair text-5xl">
-                  <h1 className="text-white font-playfair shadow">
-                    Ary & Fernanda{" "}
-                  </h1>
+                <div className="couple font-playfair text-4xl">
+                  <h1 className="text-white font-playfair">Ary & Fernanda </h1>
                 </div>
               </div>
               <button
@@ -81,16 +79,18 @@ export default function SendInvitationPage() {
 
                 <div className="flex gap-10 justify-center items-center sm:flex-row flex-col">
                   <div className="flex flex-col justify-center items-center gap-5">
-                    <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
+                    <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200"></div>
                     <div>
                       <h1 className="font-italianno text-3xl text-amber-600">
                         Ary Sulistyo
                       </h1>
-                      <div className="parents flex flex-col justify-center items-center text-amber-800 mt-3">
-                        <p className="text-xs font-semibold">Putri dari :</p>
-                        <p>Bapak Rusmanto</p>
-                        <p>&</p>
-                        <p>Ibu Sriyanti</p>
+                      <div className="parents font-raleway flex flex-col justify-center items-center text-amber-800 mt-3">
+                        <p className="text-xs font-bold">Putra dari :</p>
+                        <div className="text-sm text-center">
+                          <p>Bapak Rusmanto</p>
+                          <p>&</p>
+                          <p>Ibu Sriyanti</p>
+                        </div>
                       </div>
                     </div>
                   </div>
