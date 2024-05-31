@@ -70,33 +70,47 @@ export default function SendInvitationPage() {
               <div className="container border mx-auto flex justify-center items-center gap-6 flex-col">
                 <div className="flex justify-center items-center flex-col gap-3">
                   <img
-                    src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9sb2dvLnBuZyIsImlhdCI6MTcxNjQzMjE5OSwiZXhwIjoxNzQ3OTY4MTk5fQ.vFPWkOjlCOREKmDbB5968l_Hhyia41Hb13EngHwJOYg&t=2024-05-23T02%3A43%3A20.135Z"
+                    src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/icons-2.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9pY29ucy0yLnBuZyIsImlhdCI6MTcxNzExOTY4NSwiZXhwIjoxNzQ4NjU1Njg1fQ.3UKajZA2ShYN4TapAWXjhFn4VW7_eEl3i_VS4I1lS8o&t=2024-05-31T01%3A41%3A20.792Z"
                     alt="logos"
                     className="w-20"
                   />
-                  <p className="text-amber-800 font-playfair text-2xl font-bold">
+                  <p className="text-amber-800 font-italianno text-2xl">
                     The Wedding of
                   </p>
                 </div>
 
                 <div className="flex gap-10 justify-center items-center sm:flex-row flex-col">
-                  <div className="flex flex-col justify-center items-center">
-                    <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
-                    <div>Ary Sulistyo</div>
+                  <div className="flex flex-col justify-center items-center gap-5">
+                    <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
+                    <div>
+                      <h1 className="font-italianno text-3xl text-amber-600">
+                        Ary Sulistyo
+                      </h1>
+                      <div className="parents flex flex-col justify-center items-center text-amber-800 mt-3">
+                        <p className="text-xs font-semibold">Putri dari :</p>
+                        <p>Bapak Rusmanto</p>
+                        <p>&</p>
+                        <p>Ibu Sriyanti</p>
+                      </div>
+                    </div>
                   </div>
                   <div>
-                    <h1 className="font-playfair text-3xl font-bold">&</h1>
+                    <h1 className="font-playfair text-3xl font-bold text-amber-700">
+                      &
+                    </h1>
                   </div>
                   <div className="flex flex-col justify-center items-center gap-5">
                     <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
                     <div>
-                      <h1 className="font-playfair text-xl font-bold">
-                        Fernanda Zahra
+                      <h1 className="font-italianno text-3xl text-amber-600">
+                        Fernanda Destalia Yusuf
                       </h1>
-                      <p>Putri dari</p>
-                      <p>Bapak H. Arif Samsudin</p>
-                      <p>&</p>
-                      <p>Ibu Ningsih Tinampi</p>
+                      <div className="parents flex flex-col justify-center items-center text-amber-800 mt-3">
+                        <p className="text-xs font-semibold">Putri dari :</p>
+                        <p>Bapak Yusup</p>
+                        <p>&</p>
+                        <p>Ibu Trisni Purwanti</p>
+                      </div>
                     </div>
                   </div>
                 </div>
