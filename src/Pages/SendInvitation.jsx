@@ -61,9 +61,46 @@ export default function SendInvitationPage() {
 
         {/* Main Invitation */}
         {currentState === "main" && (
-          <div id="main-invitation">
-            <div>
+          <div id="main-invitation" className="min-h-screen">
+            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center min-h-[960px] hidden">
               <h1>Ini adalah halaman isi undangan</h1>
+            </div>
+            <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
+              {/* couple */}
+              <div className="container border mx-auto flex justify-center items-center gap-6 flex-col">
+                <div className="flex justify-center items-center flex-col gap-3">
+                  <img
+                    src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9sb2dvLnBuZyIsImlhdCI6MTcxNjQzMjE5OSwiZXhwIjoxNzQ3OTY4MTk5fQ.vFPWkOjlCOREKmDbB5968l_Hhyia41Hb13EngHwJOYg&t=2024-05-23T02%3A43%3A20.135Z"
+                    alt="logos"
+                    className="w-20"
+                  />
+                  <p className="text-amber-800 font-playfair text-2xl font-bold">
+                    The Wedding of
+                  </p>
+                </div>
+
+                <div className="flex gap-10 justify-center items-center sm:flex-row flex-col">
+                  <div className="flex flex-col justify-center items-center">
+                    <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
+                    <div>Ary Sulistyo</div>
+                  </div>
+                  <div>
+                    <h1 className="font-playfair text-3xl font-bold">&</h1>
+                  </div>
+                  <div className="flex flex-col justify-center items-center gap-5">
+                    <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-t-full ring ring-amber-200"></div>
+                    <div>
+                      <h1 className="font-playfair text-xl font-bold">
+                        Fernanda Zahra
+                      </h1>
+                      <p>Putri dari</p>
+                      <p>Bapak H. Arif Samsudin</p>
+                      <p>&</p>
+                      <p>Ibu Ningsih Tinampi</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
