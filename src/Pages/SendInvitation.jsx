@@ -4,18 +4,58 @@ import { useSearchParams } from "react-router-dom";
 // Icons
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
   const guestName = searchParams.get("to");
-
   const [currentState, setCurrentState] = useState("split"); // 'split', 'loading', 'main'
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  // Countdown
+  useEffect(() => {
+    const targetDate = new Date("2024-06-30T09:00:00");
+
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = targetDate - now;
+      let timeLeft = {};
+      if (difference > 0) {
+        timeLeft = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      } else {
+        timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      }
+      setTimeLeft(timeLeft);
+    };
+
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleOpenInvitation = () => {
     setCurrentState("loading");
     setTimeout(() => {
       setCurrentState("main");
     }, 2000); // 2 detik jeda loading
+  };
+
+  // Simpan Kalender
+  const googleCalenderLink = () => {
+    const title = encodeURIComponent("Ary & Fernanda's Wedding");
+    const start = encodeURIComponent("2024-06-30T09:00:00");
+    const end = encodeURIComponent("2024-06-30T10:00:00");
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}`;
+    return url;
   };
 
   return (
@@ -61,13 +101,47 @@ export default function SendInvitationPage() {
         {/* Main Invitation */}
         {currentState === "main" && (
           <div id="main-invitation" className="min-h-screen">
-            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center min-h-[960px] hidden">
-              <h1>Ini adalah halaman isi undangan</h1>
+            {/* Header */}
+            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center min-h-[960px]">
+              <div className="border container mx-auto flex flex-col justify-center items-center h-svh bg-white/80 gap-10">
+                <div className="text-3xl font-bold text-[#E2C799]">
+                  <h1>30.06.2024</h1>
+                </div>
+                <div className="flex flex-row gap-4 justify-center items-center text-4xl">
+                  <h1 className="font-italianno text-5xl text-amber-700">
+                    Ary
+                  </h1>
+                  <h1 className="font-playfair text-5xl text-amber-700">&</h1>
+                  <h1 className="font-italianno text-5xl text-amber-700">
+                    Nanda
+                  </h1>
+                </div>
+                <div className="description flex flex-col justify-center items-center text-center gap-5 border w-3/4">
+                  <p>بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ</p>
+                  <p>
+                    وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ
+                    اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ
+                    مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ
+                    يَّتَفَكَّرُوْنَ
+                  </p>
+                  <p className="text-sm font-playfair tracking-wide">
+                    " Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia
+                    menciptakan pasangan-pasangan untukmu dari (jenis) dirimu
+                    sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan
+                    di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada
+                    yang demikian itu benar-benar terdapat tanda-tanda
+                    (kebesaran Allah) bagi kaum yang berpikir. "
+                  </p>
+                  <p>( QS: Ar-Rum:21 )</p>
+                </div>
+              </div>
             </div>
+
+            {/* Couple */}
             <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
               {/* couple */}
               <div
-                className="container border mx-auto flex justify-center items-center gap-6 flex-col"
+                className="container border mx-auto flex justify-center items-center gap-6 flex-col pt-5 sm:pt-12"
                 data-aos="fade-up"
               >
                 <div className="flex justify-center items-center flex-col gap-3">
@@ -128,26 +202,41 @@ export default function SendInvitationPage() {
 
               {/* Time Count Down */}
               <div className="border container mx-auto">
-                <div className="bg-white rounded-3xl shadow-sm my-16 mx-10 flex flex-col justify-center items-center py-10 gap-9">
-                  <div className="flex flex-wrap justify-center items-center gap-5">
-                    <div className="date-div flex justify-center items-center gap-3 flex-col bg-amber-100 px-5 py-4 rounded-2xl shadow">
-                      <h1 className="text-5xl font-semibold text-amber-700">00</h1>
-                      <p className="text-amber-600">Hari</p>
+                <div className="bg-countdown bg-cover bg-no-repeat bg-right sm:bg-center rounded-3xl shadow-sm my-16 mx-5 sm:mx-12 flex flex-col justify-center items-center py-10 gap-5 sm:gap-9">
+                  <div className="text-[#C08261] font-italianno text-3xl font-semibold">
+                    <h1>Menuju Akad</h1>
+                  </div>
+
+                  <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-5">
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/45 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                        {timeLeft.days}
+                      </h1>
+                      <p className="text-amber-600 sm:text-xl text-sm">Hari</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-3 flex-col bg-amber-100 px-5 py-4 rounded-2xl shadow">
-                      <h1 className="text-5xl font-semibold text-amber-700">00</h1>
-                      <p className="text-amber-600">Jam</p>
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                        {timeLeft.hours}
+                      </h1>
+                      <p className="text-amber-600 sm:text-xl text-sm">Jam</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-3 flex-col bg-amber-100 px-5 py-4 rounded-2xl shadow">
-                      <h1 className="text-5xl font-semibold text-amber-700">00</h1>
-                      <p className="text-amber-600">Menit</p>
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                        {timeLeft.minutes}
+                      </h1>
+                      <p className="text-amber-600 sm:text-xl text-sm">Menit</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-3 flex-col bg-amber-100 px-5 py-4 rounded-2xl shadow">
-                      <h1 className="text-5xl font-semibold text-amber-700">00</h1>
-                      <p className="text-amber-600">Detik</p>
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                        {timeLeft.seconds}
+                      </h1>
+                      <p className="text-amber-600 sm:text-xl text-sm">Detik</p>
                     </div>
                   </div>
-                  <Link className="text-amber-600 py-4 font-raleway bg-amber-100 rounded-full px-10 border border-amber-600 shadow-sm font-bold">
+                  <Link
+                    to={googleCalenderLink()}
+                    className="text-amber-100 py-4 font-raleway bg-[#C08261] rounded-full px-10 text-sm border-2 border-[#F2ECBE] shadow-sm font-bold"
+                  >
                     Simpan Tanggal
                   </Link>
                 </div>
@@ -156,6 +245,11 @@ export default function SendInvitationPage() {
               {/* Photo Gallery */}
 
               {/* Message Fitures */}
+            </div>
+
+            {/* <Footer /> */}
+            <div className="footer text-center py-5 bg-[#F2ECBE]">
+              <p className="text-sm font-semibold text-amber-800">Copyright ©2024 Created with ❤️ by ewohku</p>
             </div>
           </div>
         )}
