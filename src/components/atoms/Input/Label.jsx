@@ -4,7 +4,7 @@ export default function Label({ htmlFor, children }) {
   return (
     <label
       htmlFor={htmlFor}
-      className="block text-slate-600 text-sm font-bold mb-2"
+      className="block text-slate-100 font-poppins text-xs"
     >
       {children}
     </label>

@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import InputForm from "../components/atoms/Input/InputForm";
+import { Button } from "@mui/material";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
@@ -48,6 +50,21 @@ export default function SendInvitationPage() {
       setCurrentState("main");
     }, 2000); // 2 detik jeda loading
   };
+
+  // Handle Input Wishes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   // Simpan Kalender
   const googleCalenderLink = () => {
@@ -124,7 +141,7 @@ export default function SendInvitationPage() {
                     مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ
                     يَّتَفَكَّرُوْنَ
                   </p>
-                  <p className="text-sm font-playfair tracking-wide">
+                  <p className=" text-xs sm:text-sm font-playfair tracking-wide">
                     " Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia
                     menciptakan pasangan-pasangan untukmu dari (jenis) dirimu
                     sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan
@@ -132,7 +149,7 @@ export default function SendInvitationPage() {
                     yang demikian itu benar-benar terdapat tanda-tanda
                     (kebesaran Allah) bagi kaum yang berpikir. "
                   </p>
-                  <p>( QS: Ar-Rum:21 )</p>
+                  <p className="text-xs">( QS: Ar-Rum:21 )</p>
                 </div>
               </div>
             </div>
@@ -141,8 +158,9 @@ export default function SendInvitationPage() {
             <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
               {/* couple */}
               <div
-                className="container border mx-auto flex justify-center items-center gap-6 flex-col pt-5 sm:pt-12"
+                className="container border mx-auto flex justify-center items-center gap-6 flex-col sm:pt-12"
                 data-aos="fade-up"
+                data-aos-duration="2000"
               >
                 <div className="flex justify-center items-center flex-col gap-3">
                   <img
@@ -208,25 +226,25 @@ export default function SendInvitationPage() {
                   </div>
 
                   <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-5">
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/45 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
                       <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
                         {timeLeft.days}
                       </h1>
                       <p className="text-amber-600 sm:text-xl text-sm">Hari</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
                       <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
                         {timeLeft.hours}
                       </h1>
                       <p className="text-amber-600 sm:text-xl text-sm">Jam</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
                       <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
                         {timeLeft.minutes}
                       </h1>
                       <p className="text-amber-600 sm:text-xl text-sm">Menit</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
+                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
                       <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
                         {timeLeft.seconds}
                       </h1>
@@ -245,11 +263,122 @@ export default function SendInvitationPage() {
               {/* Photo Gallery */}
 
               {/* Message Fitures */}
+              <div className="mx-auto border py-10 bg-[#F2ECBE]/50">
+                <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-10 sm:w-2/3 w-11/12 mx-auto">
+                  <div className="bg-[#3F2305] px-9 py-10 rounded-xl shadow-sm flex flex-col gap-5 sm:basis-1/2 max-w-md">
+                    <div className="title-card text-[#F2ECBE] flex flex-row justify-around gap-7 items-start">
+                      <h1 className="text-3xl font-playfair">
+                        Ucapan Pernikahan
+                      </h1>
+                      <p>___________</p>
+                    </div>
+                    <form className="w-full mx-auto" action="">
+                      <InputForm
+                        label="Nama Anda"
+                        name="name"
+                        type="text"
+                        placeholder="Masukkan Nama Anda"
+                        className="text-slate-600 bg-gray-50/25 outline outline-yellow-900 placeholder:opacity-50"
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                      />
+                      <InputForm
+                        label="Alamat Anda"
+                        name="address"
+                        type="text"
+                        placeholder="Masukkan Alamat Anda"
+                        className="text-slate-600 bg-gray-50/25 outline outline-yellow-900 placeholder:opacity-50"
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                      />
+                      <Button style={{ width: "100%", padding: "1rem", marginTop: "1rem", backgroundColor: "#F2ECBE", color: "#3F2305", fontWeight: "bold" }} variant="contained" color="primary" type="submit">
+                        Kirim Ucapan
+                      </Button>
+                    </form>
+                  </div>
+                  <div className="border flex flex-col gap-3 sm:basis-1/2 snap-y scroll-py-3">
+                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
+                        JK
+                      </div>
+                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
+                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
+                          Presiden Joko Widodo
+                        </p>
+                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Enim cum reiciendis veritatis officiis suscipit
+                          vero voluptate ea nisi expedita ratione.
+                        </p>
+                        <p className="text-xs font-raleway text-slate-300">
+                          1 hari yang lalu • pukul 10:58 WIB
+                        </p>
+                      </div>
+                    </div>
+                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
+                        JK
+                      </div>
+                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
+                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
+                          Presiden Joko Widodo
+                        </p>
+                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Enim cum reiciendis veritatis officiis suscipit
+                          vero voluptate ea nisi expedita ratione.
+                        </p>
+                        <p className="text-xs font-raleway text-slate-300">
+                          1 hari yang lalu • pukul 10:58 WIB
+                        </p>
+                      </div>
+                    </div>
+                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
+                        JK
+                      </div>
+                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
+                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
+                          Presiden Joko Widodo
+                        </p>
+                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Enim cum reiciendis veritatis officiis suscipit
+                          vero voluptate ea nisi expedita ratione.
+                        </p>
+                        <p className="text-xs font-raleway text-slate-300">
+                          1 hari yang lalu • pukul 10:58 WIB
+                        </p>
+                      </div>
+                    </div>
+                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
+                        JK
+                      </div>
+                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
+                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
+                          Presiden Joko Widodo
+                        </p>
+                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Enim cum reiciendis veritatis officiis suscipit
+                          vero voluptate ea nisi expedita ratione.
+                        </p>
+                        <p className="text-xs font-raleway text-slate-300">
+                          1 hari yang lalu • pukul 10:58 WIB
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* <Footer /> */}
             <div className="footer text-center py-5 bg-[#F2ECBE]">
-              <p className="text-sm font-semibold text-amber-800">Copyright ©2024 Created with ❤️ by ewohku</p>
+              <p className="text-sm font-semibold text-amber-800">
+                Copyright ©2024 Created with ❤️ by ewohku
+              </p>
             </div>
           </div>
         )}

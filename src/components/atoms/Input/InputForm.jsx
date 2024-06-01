@@ -12,25 +12,29 @@ const InputForm = forwardRef(
       placeholder = "",
       value = "",
       onChange,
+      className = "",
       required = false,
     },
     ref
   ) => (
-    <div className="mb-3">
-      <Label htmlFor={name} className="block mb-2 text-sm font-bold text-slate-600">
-        {label}
-      </Label>
-      <Input
-        type={type}
-        name={name}
-        id={name}
-        placeholder={placeholder}
-        ref={ref}
-        value={value}
-        onChange={onChange}
-        required={required}
-      />
-    </div>
+    <>
+      <div className="mb-3 flex flex-col gap-2">
+        <Label htmlFor={name} className={`${className} block mb-2 text-sm font-bold`}>
+          {label}
+        </Label>
+        <Input
+          type={type}
+          name={name}
+          id={name}
+          placeholder={placeholder}
+          ref={ref}
+          value={value}
+          onChange={onChange}
+          required={required}
+          className={`${className}`}
+        />
+      </div>
+    </>
   )
 );
 
@@ -40,6 +44,7 @@ InputForm.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
   required: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
