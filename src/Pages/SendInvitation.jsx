@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import InputForm from "../components/atoms/Input/InputForm";
 import { Button } from "@mui/material";
+import InputTextArea from "../components/atoms/Input/InputTextArea";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
@@ -291,13 +292,33 @@ export default function SendInvitationPage() {
                         required
                         onChange={(e) => handleInputChange(e)}
                       />
-                      <Button style={{ width: "100%", padding: "1rem", marginTop: "1rem", backgroundColor: "#F2ECBE", color: "#3F2305", fontWeight: "bold" }} variant="contained" color="primary" type="submit">
+                      <InputTextArea
+                        label="Ucapan"
+                        name="message"
+                        placeholder="Tuliskan Ucapan Anda"
+                        className="text-slate-600  outline outline-yellow-900 placeholder:opacity-50"
+                        rows="5"
+                        onChange={(e) => handleInputChange(e)}
+                      ></InputTextArea>
+                      <Button
+                        style={{
+                          width: "100%",
+                          padding: "1rem",
+                          marginTop: "1rem",
+                          backgroundColor: "#F2ECBE",
+                          color: "#3F2305",
+                          fontWeight: "bold",
+                        }}
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                      >
                         Kirim Ucapan
                       </Button>
                     </form>
                   </div>
-                  <div className="border flex flex-col gap-3 sm:basis-1/2 snap-y scroll-py-3">
-                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                  <div className="border flex flex-col gap-3 sm:basis-1/2 h-[550px] overflow-y-auto">
+                    <div className="initial-message flex flex-row justify-start items-start gap-4">
                       <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
                         JK
                       </div>
@@ -315,7 +336,7 @@ export default function SendInvitationPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                    <div className="initial-message flex flex-row justify-start items-start gap-4">
                       <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
                         JK
                       </div>
@@ -333,7 +354,7 @@ export default function SendInvitationPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                    <div className="initial-message flex flex-row justify-start items-start gap-4">
                       <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
                         JK
                       </div>
@@ -351,7 +372,7 @@ export default function SendInvitationPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4 snap-start">
+                    <div className="initial-message flex flex-row justify-start items-start gap-4">
                       <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
                         JK
                       </div>
