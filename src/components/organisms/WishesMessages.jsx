@@ -119,7 +119,7 @@ export const WishesMessages = () => {
           </div>
           <div
             id="list-wishes"
-            className="border flex flex-col gap-3 sm:basis-1/2 h-[550px] overflow-y-auto"
+            className=" flex flex-col gap-3 sm:basis-1/2 h-[550px] overflow-y-auto"
           >
             {/* Mapping Messages List */}
             {wishers.map((message) => (

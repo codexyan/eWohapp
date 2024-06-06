@@ -9,7 +9,8 @@ import { useEffect } from "react";
 
 // Icons
 import { SlLocationPin } from "react-icons/sl";
-import { WishesMessages }  from "../components/organisms/WishesMessages";
+import { WishesMessages } from "../components/organisms/WishesMessages";
+import { GiftSection } from "../components/organisms/Gift";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
@@ -162,7 +163,7 @@ export default function SendInvitationPage() {
             <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
               {/* couple */}
               <div
-                className="container flex flex-col items-center justify-center gap-6 mx-auto border sm:pt-12"
+                className="container flex flex-col items-center justify-center gap-6 mx-auto border sm:py-12"
                 data-aos="fade-up"
                 data-aos-duration="2000"
               >
@@ -222,20 +223,31 @@ export default function SendInvitationPage() {
                 </div>
               </div>
 
+              {/* Greeting */}
+              <div className="mx-auto border py-16 bg-amber-100">
+                <div className="container mx-auto text-center border">
+                  <p className="w-3/5 text-center font-semibold mx-auto text-sm sm:text-lg">
+                    Merupakan suatu kebahagiaan bagi kami, apabila
+                    Bapak/lbu/Saudara/i berkenan hadir & memberikan doa restu
+                    kepada kedua mempelai.
+                  </p>
+                </div>
+              </div>
+
               {/* Venue */}
-              <div className="container mx-auto border py-16 flex flex-col gap-5">
+              <div className="container mx-auto py-16 flex flex-col gap-8">
                 <div className="text-center">
-                  <h1 className="text-3xl font-base font-playfair">
+                  <h1 className="text-2xl font-semibold text-amber-900 sm:text-3xl font-base font-playfair">
                     Tempat Acara
                   </h1>
                 </div>
                 <div
                   id="section"
-                  className="border grid grid-cols-2 gap-8 sm:w-4/6 mx-auto"
+                  className="flex flex-col px-5 sm:flex-row gap-8 sm:w-4/6 mx-auto"
                 >
                   {/* Event 1 */}
-                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-3xl shadow-2xl">
-                    <SlLocationPin className="text-3xl text-amber-600" />
+                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-[2000px] shadow-xl">
+                    <SlLocationPin className="text-3xl text-amber-800" />
                     <h1 className="text-xl sm:text-2xl font-playfair font-semibold text-amber-700">
                       Wedding Ceremony
                     </h1>
@@ -244,34 +256,38 @@ export default function SendInvitationPage() {
                       💍
                       <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
                     </div>
-                    <h1 className="font-poppins text-lg text-slate-600">
+                    <h1 className="font-poppins font-semibold text-lg text-slate-600">
                       Minggu
                     </h1>
-                    <p className="sm:text-7xl font-medium font-italianno">30</p>
+                    <p className="sm:text-7xl text-6xl font-medium font-italianno">
+                      30
+                    </p>
                     <div className="date flex flex-col items-center justify-center gap-0">
                       <h1 className="font-poppins text-lg text-slate-600">
                         Juni 2024
                       </h1>
-                      <h1 className="font-poppins text-md text-slate-600">
+                      <h1 className="font-poppins text-sm sm:text-md text-slate-600">
                         09:00 - 10.30 WIB
                       </h1>
                     </div>
                     <hr className=" h-0.3 bg-slate-300 w-1/3" />
-                    <p className="text-xl font-semibold">Prosesi Akad Nikah</p>
-                    <p className="text-sm w-2/3 text-center text-slate-400 leading-5">
+                    <p className="text-xl font-bold text-amber-900">
+                      Prosesi Akad Nikah
+                    </p>
+                    <p className="text-sm w-10/12 text-center text-slate-400 tracking-wide">
                       Garjoyo RT03/00, Dukuh, Imogiri, Kec. Imogiri, Kabupaten
                       Bantul, Daerah Istimewa Yogyakarta
                     </p>
                     <Link
                       to="#"
-                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-2/3 sm:w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
                     >
                       Lokasi
                     </Link>
                   </div>
-                  {/* Event 1 */}
-                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-3xl shadow-2xl">
-                    <SlLocationPin className="text-3xl text-amber-600" />
+                  {/* Event 2 */}
+                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-[2000px] shadow-xl">
+                    <SlLocationPin className="text-3xl text-amber-800" />
                     <h1 className="text-xl sm:text-2xl font-playfair font-semibold text-amber-700">
                       Wedding Ceremony
                     </h1>
@@ -280,27 +296,31 @@ export default function SendInvitationPage() {
                       💍
                       <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
                     </div>
-                    <h1 className="font-poppins text-lg text-slate-600">
+                    <h1 className="font-poppins font-semibold text-lg text-slate-600">
                       Minggu
                     </h1>
-                    <p className="sm:text-7xl font-medium font-italianno">30</p>
+                    <p className="sm:text-7xl text-6xl font-medium font-italianno">
+                      30
+                    </p>
                     <div className="date flex flex-col items-center justify-center gap-0">
                       <h1 className="font-poppins text-lg text-slate-600">
                         Juni 2024
                       </h1>
-                      <h1 className="font-poppins text-md text-slate-600">
+                      <h1 className="font-poppins text-sm sm:text-md text-slate-600">
                         09:00 - 10.30 WIB
                       </h1>
                     </div>
                     <hr className=" h-0.3 bg-slate-300 w-1/3" />
-                    <p className="text-xl font-semibold">Prosesi Akad Nikah</p>
-                    <p className="text-sm w-2/3 text-center text-slate-400 leading-5">
+                    <p className="text-xl font-bold text-amber-900">
+                      Prosesi Akad Nikah
+                    </p>
+                    <p className="text-sm w-10/12 text-center text-slate-400 tracking-wide">
                       Garjoyo RT03/00, Dukuh, Imogiri, Kec. Imogiri, Kabupaten
                       Bantul, Daerah Istimewa Yogyakarta
                     </p>
                     <Link
                       to="#"
-                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-2/3 sm:w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
                     >
                       Lokasi
                     </Link>
@@ -309,7 +329,7 @@ export default function SendInvitationPage() {
               </div>
 
               {/* Time Count Down */}
-              <div className="container mx-auto border">
+              <div className="container mx-auto">
                 <div className="flex flex-col items-center justify-center gap-5 py-10 mx-5 my-16 bg-right bg-no-repeat bg-cover shadow-sm bg-countdown sm:bg-center rounded-3xl sm:mx-12 sm:gap-9">
                   <div className="text-[#C08261] font-italianno text-3xl font-semibold">
                     <h1>Menuju Akad</h1>
@@ -352,15 +372,38 @@ export default function SendInvitationPage() {
 
               {/* Photo Gallery */}
 
-              {/* Message Fitures */}
+              <GiftSection />
               <WishesMessages />
-              {/* End Message Fitures */}
 
+              {/* Closing */}
+              <div className="mx-auto bg-closing bg-bottom bg-no-repeat bg-cover sm:h-[1024px]">
+                <div className="container mx-auto h-full flex flex-col justify-between items-center">
+                  <div className="pt-20 sm:pt-32 flex flex-col items-center justify-center">
+                    <p className="text-2xl sm:text-5xl font-italianno text-center text-white">
+                      Matur Nuwun
+                    </p>
+                    <p className="text-xl sm:text-3xl font-bold font-playfair text-center">#tresNandaAry</p>
+                  </div>
+                  <div className="text-white text-center pt-5 pb-12 sm:pb-72 w-3/4 sm:w-4/12 flex flex-col items-center gap-5">
+                    <p className="sm:text-base text-xs">
+                      " Merupakan suatu kehormatan dan kebahagiaan bagi Kami
+                      apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan
+                      doa restu kepada kami berdua. "
+                    </p>
+                    <p className="text-xs sm:text-sm">
+                      Kami yang berbahagia <br /> Keluarga Besar
+                    </p>
+                    <p className="text-3xl font-semibold font-playfair">
+                      Ary & Nanda
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* <Footer /> */}
-            <div className="footer text-center py-5 bg-[#F2ECBE]">
-              <p className="text-sm font-semibold text-amber-800">
+            <div className="footer text-center py-5 bg-black">
+              <p className="text-sm font-semibold text-white">
                 Copyright ©2024 Created with ❤️ by ewohku
               </p>
             </div>
