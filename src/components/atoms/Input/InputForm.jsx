@@ -10,28 +10,41 @@ const InputForm = forwardRef(
       name,
       type = "text",
       placeholder = "",
-      value = "",
-      onChange,
       className = "",
       required = false,
+      onChange = () => { },
+      value = "",
     },
     ref
   ) => (
     <>
       <div className="mb-3 flex flex-col gap-2">
-        <Label htmlFor={name} className={`${className} block mb-2 text-sm font-bold`}>
+        <Label
+          htmlFor={name}
+          className={`${className} block mb-2 text-sm font-bold`}
+        >
           {label}
         </Label>
-        <Input
+        {/* <Input
+          type={type}
+          name={name}
+          id={name}
+          placeholder={placeholder}
+          ref={ref}
+          onChange={onChange}
+          required={required}
+          className={`${className}`}
+        /> */}
+        <input
           type={type}
           name={name}
           id={name}
           placeholder={placeholder}
           ref={ref}
           value={value}
-          onChange={onChange}
+          className={`block w-full p-3 text-sm text-gray-700 placeholder-slate-400 placeholder:text-gray-400 bg-white border border-slate-300 rounded-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 ${className}`}
           required={required}
-          className={`${className}`}
+          onChange={onChange}
         />
       </div>
     </>
@@ -47,6 +60,7 @@ InputForm.propTypes = {
   className: PropTypes.string,
   required: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ref: PropTypes.any,
 };
 
 export default InputForm;

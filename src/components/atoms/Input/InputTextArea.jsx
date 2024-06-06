@@ -13,6 +13,7 @@ const InputTextArea = forwardRef(
       rows,
       cols,
       required = false,
+      value = "",
     },
     ref
   ) => (
@@ -32,6 +33,7 @@ const InputTextArea = forwardRef(
           className={`${className} p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
           onChange={onChange}
           required={required}
+          value={value}
         ></textarea>
       </div>
     </>

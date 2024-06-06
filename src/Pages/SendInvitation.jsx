@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import supabase from "../supabaseClient";
 
 // Icons
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import InputForm from "../components/atoms/Input/InputForm";
-import { Button } from "@mui/material";
-import InputTextArea from "../components/atoms/Input/InputTextArea";
+
+// Icons
+import { SlLocationPin } from "react-icons/sl";
+import { WishesMessages }  from "../components/organisms/WishesMessages";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
   const guestName = searchParams.get("to");
-  const [currentState, setCurrentState] = useState("split"); // 'split', 'loading', 'main'
+  const [currentState, setCurrentState] = useState("split");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -83,24 +85,24 @@ export default function SendInvitationPage() {
         {currentState === "split" && (
           <div
             id="split-invitation"
-            className="min-h-screen flex flex-col bg-hero-pattern2 bg-cover bg-no-repeat bg-center justify-around"
+            className="flex flex-col justify-around min-h-screen bg-center bg-no-repeat bg-cover bg-hero-pattern2"
           >
-            <div className="text-white text-center flex flex-col justify-center basis-3/4">
+            <div className="flex flex-col justify-center text-center text-white basis-3/4">
               <p className="text-sm font-semibold">YTH Bapak/Ibu/Saudara/i :</p>
               <p className="member font-righteous">{guestName}</p>
             </div>
-            <div className="wrap-content text-center flex flex-col gap-10 py-8 justify-end items-center basis-1/">
+            <div className="flex flex-col items-center justify-end gap-10 py-8 text-center wrap-content basis-1/">
               <div className="content">
                 <h1 className="text-white font-righteous">
                   We Invite You To Our Wedding
                 </h1>
-                <div className="couple font-playfair text-4xl">
+                <div className="text-4xl couple font-playfair">
                   <h1 className="text-white font-playfair">Ary & Fernanda </h1>
                 </div>
               </div>
               <button
                 onClick={handleOpenInvitation}
-                className="flex flex-row justify-center items-center gap-2 bg-amber-900 px-8 py-3 text-white rounded-full shadow hover:bg-amber-950 transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                className="flex flex-row items-center justify-center gap-2 px-8 py-3 text-white transition-transform rounded-full shadow bg-amber-900 hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
               >
                 <FaEnvelopeOpenText />
                 Buka Undangan
@@ -111,7 +113,7 @@ export default function SendInvitationPage() {
 
         {/* Loading Screen */}
         {currentState === "loading" && (
-          <div className="min-h-screen flex items-center justify-center">
+          <div className="flex items-center justify-center min-h-screen">
             <div className="loader">Loading...</div>
           </div>
         )}
@@ -120,21 +122,22 @@ export default function SendInvitationPage() {
         {currentState === "main" && (
           <div id="main-invitation" className="min-h-screen">
             {/* Header */}
-            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center min-h-[960px]">
-              <div className="border container mx-auto flex flex-col justify-center items-center h-svh bg-white/80 gap-10">
+            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center sm:min-h-[960px]">
+              {/* Checking */}
+              <div className="container flex flex-col items-center justify-center gap-10 mx-auto border h-svh bg-white/80">
                 <div className="text-3xl font-bold text-[#E2C799]">
                   <h1>30.06.2024</h1>
                 </div>
-                <div className="flex flex-row gap-4 justify-center items-center text-4xl">
-                  <h1 className="font-italianno text-5xl text-amber-700">
+                <div className="flex flex-row items-center justify-center gap-4 text-4xl">
+                  <h1 className="text-5xl font-italianno text-amber-700">
                     Ary
                   </h1>
-                  <h1 className="font-playfair text-5xl text-amber-700">&</h1>
-                  <h1 className="font-italianno text-5xl text-amber-700">
+                  <h1 className="text-5xl font-playfair text-amber-700">&</h1>
+                  <h1 className="text-5xl font-italianno text-amber-700">
                     Nanda
                   </h1>
                 </div>
-                <div className="description flex flex-col justify-center items-center text-center gap-5 border w-3/4">
+                <div className="flex flex-col items-center justify-center w-3/4 gap-5 text-center border description">
                   <p>بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ</p>
                   <p>
                     وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ
@@ -142,7 +145,7 @@ export default function SendInvitationPage() {
                     مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ
                     يَّتَفَكَّرُوْنَ
                   </p>
-                  <p className=" text-xs sm:text-sm font-playfair tracking-wide">
+                  <p className="text-xs tracking-wide sm:text-sm font-playfair">
                     " Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia
                     menciptakan pasangan-pasangan untukmu dari (jenis) dirimu
                     sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan
@@ -159,33 +162,33 @@ export default function SendInvitationPage() {
             <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
               {/* couple */}
               <div
-                className="container border mx-auto flex justify-center items-center gap-6 flex-col sm:pt-12"
+                className="container flex flex-col items-center justify-center gap-6 mx-auto border sm:pt-12"
                 data-aos="fade-up"
                 data-aos-duration="2000"
               >
-                <div className="flex justify-center items-center flex-col gap-3">
+                <div className="flex flex-col items-center justify-center gap-3">
                   <img
                     src="https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/icons-2.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9pY29ucy0yLnBuZyIsImlhdCI6MTcxNzExOTY4NSwiZXhwIjoxNzQ4NjU1Njg1fQ.3UKajZA2ShYN4TapAWXjhFn4VW7_eEl3i_VS4I1lS8o&t=2024-05-31T01%3A41%3A20.792Z"
                     alt="logos"
                     className="w-20"
                   />
-                  <p className="text-amber-800 font-italianno text-2xl">
+                  <p className="text-2xl text-amber-800 font-italianno">
                     The Wedding of
                   </p>
                 </div>
 
                 <div
-                  className="flex gap-10 justify-center items-center sm:flex-row flex-col"
+                  className="flex flex-col items-center justify-center gap-10 sm:flex-row"
                   data-aos="fade-up"
                   data-aos-anchor-placement="top-center"
                 >
-                  <div className="flex flex-col justify-center items-center gap-5">
+                  <div className="flex flex-col items-center justify-center gap-5">
                     <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200"></div>
                     <div>
-                      <h1 className="font-italianno text-3xl text-amber-600">
+                      <h1 className="text-3xl font-italianno text-amber-600">
                         Ary Sulistyo
                       </h1>
-                      <div className="parents font-raleway flex flex-col justify-center items-center text-amber-800 mt-3">
+                      <div className="flex flex-col items-center justify-center mt-3 parents font-raleway text-amber-800">
                         <p className="text-xs font-bold">Putra dari :</p>
                         <div className="text-sm text-center">
                           <p>Bapak Rusmanto</p>
@@ -196,17 +199,17 @@ export default function SendInvitationPage() {
                     </div>
                   </div>
                   <div>
-                    <h1 className="font-playfair text-3xl font-bold text-amber-700">
+                    <h1 className="text-3xl font-bold font-playfair text-amber-700">
                       &
                     </h1>
                   </div>
-                  <div className="flex flex-col justify-center items-center gap-5">
+                  <div className="flex flex-col items-center justify-center gap-5">
                     <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200"></div>
                     <div>
-                      <h1 className="font-italianno text-3xl text-amber-600">
+                      <h1 className="text-3xl font-italianno text-amber-600">
                         Fernanda Destalia Yusuf
                       </h1>
-                      <div className="parents flex flex-col justify-center items-center text-amber-800 mt-3">
+                      <div className="flex flex-col items-center justify-center mt-3 parents text-amber-800">
                         <p className="text-xs font-semibold">Putri dari :</p>
                         <div className="text-sm text-center">
                           <p>Bapak Yusup</p>
@@ -219,37 +222,123 @@ export default function SendInvitationPage() {
                 </div>
               </div>
 
+              {/* Venue */}
+              <div className="container mx-auto border py-16 flex flex-col gap-5">
+                <div className="text-center">
+                  <h1 className="text-3xl font-base font-playfair">
+                    Tempat Acara
+                  </h1>
+                </div>
+                <div
+                  id="section"
+                  className="border grid grid-cols-2 gap-8 sm:w-4/6 mx-auto"
+                >
+                  {/* Event 1 */}
+                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-3xl shadow-2xl">
+                    <SlLocationPin className="text-3xl text-amber-600" />
+                    <h1 className="text-xl sm:text-2xl font-playfair font-semibold text-amber-700">
+                      Wedding Ceremony
+                    </h1>
+                    <div className="divider flex w-full items-center justify-center gap-2">
+                      <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
+                      💍
+                      <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
+                    </div>
+                    <h1 className="font-poppins text-lg text-slate-600">
+                      Minggu
+                    </h1>
+                    <p className="sm:text-7xl font-medium font-italianno">30</p>
+                    <div className="date flex flex-col items-center justify-center gap-0">
+                      <h1 className="font-poppins text-lg text-slate-600">
+                        Juni 2024
+                      </h1>
+                      <h1 className="font-poppins text-md text-slate-600">
+                        09:00 - 10.30 WIB
+                      </h1>
+                    </div>
+                    <hr className=" h-0.3 bg-slate-300 w-1/3" />
+                    <p className="text-xl font-semibold">Prosesi Akad Nikah</p>
+                    <p className="text-sm w-2/3 text-center text-slate-400 leading-5">
+                      Garjoyo RT03/00, Dukuh, Imogiri, Kec. Imogiri, Kabupaten
+                      Bantul, Daerah Istimewa Yogyakarta
+                    </p>
+                    <Link
+                      to="#"
+                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      Lokasi
+                    </Link>
+                  </div>
+                  {/* Event 1 */}
+                  <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-3xl shadow-2xl">
+                    <SlLocationPin className="text-3xl text-amber-600" />
+                    <h1 className="text-xl sm:text-2xl font-playfair font-semibold text-amber-700">
+                      Wedding Ceremony
+                    </h1>
+                    <div className="divider flex w-full items-center justify-center gap-2">
+                      <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
+                      💍
+                      <hr className="my-5 h-0.5 bg-slate-300 w-1/5" />
+                    </div>
+                    <h1 className="font-poppins text-lg text-slate-600">
+                      Minggu
+                    </h1>
+                    <p className="sm:text-7xl font-medium font-italianno">30</p>
+                    <div className="date flex flex-col items-center justify-center gap-0">
+                      <h1 className="font-poppins text-lg text-slate-600">
+                        Juni 2024
+                      </h1>
+                      <h1 className="font-poppins text-md text-slate-600">
+                        09:00 - 10.30 WIB
+                      </h1>
+                    </div>
+                    <hr className=" h-0.3 bg-slate-300 w-1/3" />
+                    <p className="text-xl font-semibold">Prosesi Akad Nikah</p>
+                    <p className="text-sm w-2/3 text-center text-slate-400 leading-5">
+                      Garjoyo RT03/00, Dukuh, Imogiri, Kec. Imogiri, Kabupaten
+                      Bantul, Daerah Istimewa Yogyakarta
+                    </p>
+                    <Link
+                      to="#"
+                      className="bg-amber-900 text-white font-bold py-4 rounded-full mt-5 w-1/3 text-center transition-transform hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      Lokasi
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               {/* Time Count Down */}
-              <div className="border container mx-auto">
-                <div className="bg-countdown bg-cover bg-no-repeat bg-right sm:bg-center rounded-3xl shadow-sm my-16 mx-5 sm:mx-12 flex flex-col justify-center items-center py-10 gap-5 sm:gap-9">
+              <div className="container mx-auto border">
+                <div className="flex flex-col items-center justify-center gap-5 py-10 mx-5 my-16 bg-right bg-no-repeat bg-cover shadow-sm bg-countdown sm:bg-center rounded-3xl sm:mx-12 sm:gap-9">
                   <div className="text-[#C08261] font-italianno text-3xl font-semibold">
                     <h1>Menuju Akad</h1>
                   </div>
 
-                  <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-5">
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
-                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-5">
+                    <div className="flex flex-col items-center justify-center gap-1 px-5 py-4 shadow date-div sm:gap-3 bg-amber-100/80 rounded-xl sm:rounded-2xl">
+                      <h1 className="text-2xl font-semibold sm:text-5xl text-amber-700">
                         {timeLeft.days}
                       </h1>
-                      <p className="text-amber-600 sm:text-xl text-sm">Hari</p>
+                      <p className="text-sm text-amber-600 sm:text-xl">Hari</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
-                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                    <div className="flex flex-col items-center justify-center gap-1 px-5 py-4 shadow date-div sm:gap-3 bg-amber-100/80 rounded-xl sm:rounded-2xl">
+                      <h1 className="text-2xl font-semibold sm:text-5xl text-amber-700">
                         {timeLeft.hours}
                       </h1>
-                      <p className="text-amber-600 sm:text-xl text-sm">Jam</p>
+                      <p className="text-sm text-amber-600 sm:text-xl">Jam</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
-                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                    <div className="flex flex-col items-center justify-center gap-1 px-5 py-4 shadow date-div sm:gap-3 bg-amber-100/80 rounded-xl sm:rounded-2xl">
+                      <h1 className="text-2xl font-semibold sm:text-5xl text-amber-700">
                         {timeLeft.minutes}
                       </h1>
-                      <p className="text-amber-600 sm:text-xl text-sm">Menit</p>
+                      <p className="text-sm text-amber-600 sm:text-xl">Menit</p>
                     </div>
-                    <div className="date-div flex justify-center items-center gap-1 sm:gap-3 flex-col bg-amber-100/80 px-5 py-4 rounded-xl sm:rounded-2xl shadow">
-                      <h1 className="text-2xl sm:text-5xl font-semibold text-amber-700">
+                    <div className="flex flex-col items-center justify-center gap-1 px-5 py-4 shadow date-div sm:gap-3 bg-amber-100/80 rounded-xl sm:rounded-2xl">
+                      <h1 className="text-2xl font-semibold sm:text-5xl text-amber-700">
                         {timeLeft.seconds}
                       </h1>
-                      <p className="text-amber-600 sm:text-xl text-sm">Detik</p>
+                      <p className="text-sm text-amber-600 sm:text-xl">Detik</p>
                     </div>
                   </div>
                   <Link
@@ -264,135 +353,9 @@ export default function SendInvitationPage() {
               {/* Photo Gallery */}
 
               {/* Message Fitures */}
-              <div className="mx-auto border py-10 bg-[#F2ECBE]/50">
-                <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-10 sm:w-2/3 w-11/12 mx-auto">
-                  <div className="bg-[#3F2305] px-9 py-10 rounded-xl shadow-sm flex flex-col gap-5 sm:basis-1/2 max-w-md">
-                    <div className="title-card text-[#F2ECBE] flex flex-row justify-around gap-7 items-start">
-                      <h1 className="text-3xl font-playfair">
-                        Ucapan Pernikahan
-                      </h1>
-                      <p>___________</p>
-                    </div>
-                    <form className="w-full mx-auto" action="">
-                      <InputForm
-                        label="Nama Anda"
-                        name="name"
-                        type="text"
-                        placeholder="Masukkan Nama Anda"
-                        className="text-slate-600 bg-gray-50/25 outline outline-yellow-900 placeholder:opacity-50"
-                        required
-                        onChange={(e) => handleInputChange(e)}
-                      />
-                      <InputForm
-                        label="Alamat Anda"
-                        name="address"
-                        type="text"
-                        placeholder="Masukkan Alamat Anda"
-                        className="text-slate-600 bg-gray-50/25 outline outline-yellow-900 placeholder:opacity-50"
-                        required
-                        onChange={(e) => handleInputChange(e)}
-                      />
-                      <InputTextArea
-                        label="Ucapan"
-                        name="message"
-                        placeholder="Tuliskan Ucapan Anda"
-                        className="text-slate-600  outline outline-yellow-900 placeholder:opacity-50"
-                        rows="5"
-                        onChange={(e) => handleInputChange(e)}
-                      ></InputTextArea>
-                      <Button
-                        style={{
-                          width: "100%",
-                          padding: "1rem",
-                          marginTop: "1rem",
-                          backgroundColor: "#F2ECBE",
-                          color: "#3F2305",
-                          fontWeight: "bold",
-                        }}
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                      >
-                        Kirim Ucapan
-                      </Button>
-                    </form>
-                  </div>
-                  <div className="border flex flex-col gap-3 sm:basis-1/2 h-[550px] overflow-y-auto">
-                    <div className="initial-message flex flex-row justify-start items-start gap-4">
-                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
-                        JK
-                      </div>
-                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
-                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
-                          Presiden Joko Widodo
-                        </p>
-                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Enim cum reiciendis veritatis officiis suscipit
-                          vero voluptate ea nisi expedita ratione.
-                        </p>
-                        <p className="text-xs font-raleway text-slate-300">
-                          1 hari yang lalu • pukul 10:58 WIB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4">
-                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
-                        JK
-                      </div>
-                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
-                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
-                          Presiden Joko Widodo
-                        </p>
-                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Enim cum reiciendis veritatis officiis suscipit
-                          vero voluptate ea nisi expedita ratione.
-                        </p>
-                        <p className="text-xs font-raleway text-slate-300">
-                          1 hari yang lalu • pukul 10:58 WIB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4">
-                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
-                        JK
-                      </div>
-                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
-                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
-                          Presiden Joko Widodo
-                        </p>
-                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Enim cum reiciendis veritatis officiis suscipit
-                          vero voluptate ea nisi expedita ratione.
-                        </p>
-                        <p className="text-xs font-raleway text-slate-300">
-                          1 hari yang lalu • pukul 10:58 WIB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="initial-message flex flex-row justify-start items-start gap-4">
-                      <div className="initial-name bg-white sm:px-4 sm:py-3 px-2 py-1 shadow-md text-center rounded-full font-playfair font-bold text-sm sm:text-xl">
-                        JK
-                      </div>
-                      <div className="flex flex-col gap-3 message bg-white/80 px-8 py-5 rounded-tr-lg rounded-bl-lg rounded-tl-3xl rounded-br-3xl">
-                        <p className="sm:text-normal text-sm font-raleway font-bold text-amber-950">
-                          Presiden Joko Widodo
-                        </p>
-                        <p className="text-xs sm:text-sm font-raleway leading-relaxed text-amber-950">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Enim cum reiciendis veritatis officiis suscipit
-                          vero voluptate ea nisi expedita ratione.
-                        </p>
-                        <p className="text-xs font-raleway text-slate-300">
-                          1 hari yang lalu • pukul 10:58 WIB
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <WishesMessages />
+              {/* End Message Fitures */}
+
             </div>
 
             {/* <Footer /> */}

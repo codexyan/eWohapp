@@ -9,4 +9,6 @@ if (!supabase) {
   supabase = createClient(supabaseUrl, supabaseAnonKey);
 }
 
+// supabase = createClient(supabaseUrl, supabaseAnonKey);
+
 export default supabase;
