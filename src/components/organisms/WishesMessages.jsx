@@ -58,7 +58,7 @@ export const WishesMessages = () => {
   return (
     <>
       {/* Message Features */}
-      <div className="mx-auto border py-10 bg-[#F2ECBE]/50">
+      <div className="mx-auto py-10 bg-[#F2ECBE]/50">
         <div className="flex flex-col items-center justify-center w-11/12 gap-10 mx-auto sm:flex-row sm:items-start sm:w-2/3">
           <div className="bg-[#3F2305] px-9 py-10 rounded-xl shadow-sm flex flex-col gap-5 sm:basis-1/2 max-w-md">
             <div className="title-card text-[#F2ECBE] flex flex-row justify-around gap-7 items-start">

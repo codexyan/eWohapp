@@ -123,30 +123,30 @@ export default function SendInvitationPage() {
         {currentState === "main" && (
           <div id="main-invitation" className="min-h-screen">
             {/* Header */}
-            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center sm:min-h-[960px]">
+            <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center sm:min-h-[960px] pb-20">
               {/* Checking */}
-              <div className="container flex flex-col items-center justify-center gap-10 mx-auto border h-svh bg-white/80">
-                <div className="text-3xl font-bold text-[#E2C799]">
+              <div className="flex flex-col items-center justify-center gap-5 mx-auto border h-svh bg-header bg-cover bg-bottom">
+                <div className="text-3xl font-bold text-[#d4a758]">
                   <h1>30.06.2024</h1>
                 </div>
-                <div className="flex flex-row items-center justify-center gap-4 text-4xl">
-                  <h1 className="text-5xl font-italianno text-amber-700">
-                    Ary
-                  </h1>
-                  <h1 className="text-5xl font-playfair text-amber-700">&</h1>
-                  <h1 className="text-5xl font-italianno text-amber-700">
-                    Nanda
-                  </h1>
+                <div className="sm:text-5xl  text-4xl flex flex-row items-center justify-center gap-2">
+                  <h1 className=" font-italianno text-amber-700">Ary</h1>
+                  <h1 className="font-playfair text-amber-700">&</h1>
+                  <h1 className="font-italianno text-amber-700">Nanda</h1>
                 </div>
-                <div className="flex flex-col items-center justify-center w-3/4 gap-5 text-center border description">
-                  <p>بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ</p>
-                  <p>
-                    وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ
-                    اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ
-                    مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ
-                    يَّتَفَكَّرُوْنَ
-                  </p>
-                  <p className="text-xs tracking-wide sm:text-sm font-playfair">
+                <div className="flex flex-col items-center justify-center w-2/3 sm:w-1/4 gap-2 text-center description pb-20">
+                  <div className="text-xs flex flex-col gap-5 w-10/12">
+                    <p className="font-semibold">
+                      بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ
+                    </p>
+                    <p className="tracking-widest">
+                      وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ
+                      اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ
+                      مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ
+                      لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+                    </p>
+                  </div>
+                  <p className="text-[10px] w-10/12 sm:text-sm text-slate-500">
                     " Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia
                     menciptakan pasangan-pasangan untukmu dari (jenis) dirimu
                     sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan
@@ -154,7 +154,7 @@ export default function SendInvitationPage() {
                     yang demikian itu benar-benar terdapat tanda-tanda
                     (kebesaran Allah) bagi kaum yang berpikir. "
                   </p>
-                  <p className="text-xs">( QS: Ar-Rum:21 )</p>
+                  <p className="text-[10px]">( QS: Ar-Rum:21 )</p>
                 </div>
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function SendInvitationPage() {
             <div className="bg-hero-pattern4 bg-cover bg-no-repeat bg-top h-full min-h-[1900px]">
               {/* couple */}
               <div
-                className="container flex flex-col items-center justify-center gap-6 mx-auto border sm:py-12"
+                className="container flex flex-col items-center justify-center gap-6 mx-auto border py-12"
                 data-aos="fade-up"
                 data-aos-duration="2000"
               >
@@ -226,10 +226,10 @@ export default function SendInvitationPage() {
               {/* Greeting */}
               <div className="mx-auto border py-16 bg-amber-100">
                 <div className="container mx-auto text-center border">
-                  <p className="w-3/5 text-center font-semibold mx-auto text-sm sm:text-lg">
+                  <p className="w-10/12 sm:w-3/5 text-center font-semibold mx-auto text-sm sm:text-lg">
                     Merupakan suatu kebahagiaan bagi kami, apabila
                     Bapak/lbu/Saudara/i berkenan hadir & memberikan doa restu
-                    kepada kedua mempelai.
+                    kepada kami.
                   </p>
                 </div>
               </div>
@@ -378,18 +378,15 @@ export default function SendInvitationPage() {
               {/* Closing */}
               <div className="mx-auto bg-closing bg-bottom bg-no-repeat bg-cover sm:h-[1024px]">
                 <div className="container mx-auto h-full flex flex-col justify-between items-center">
-                  <div className="pt-20 sm:pt-32 flex flex-col items-center justify-center">
+                  <div className="pt-32 sm:pt-32 flex flex-col items-center justify-center">
                     <p className="text-2xl sm:text-5xl font-italianno text-center text-white">
                       Matur Nuwun
                     </p>
-                    <p className="text-xl sm:text-3xl font-bold font-playfair text-center">#tresNandaAry</p>
+                    <p className="text-xl sm:text-3xl text-yellow-800 font-bold font-playfair text-center">
+                      #tresNandAry
+                    </p>
                   </div>
                   <div className="text-white text-center pt-5 pb-12 sm:pb-72 w-3/4 sm:w-4/12 flex flex-col items-center gap-5">
-                    <p className="sm:text-base text-xs">
-                      " Merupakan suatu kehormatan dan kebahagiaan bagi Kami
-                      apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan
-                      doa restu kepada kami berdua. "
-                    </p>
                     <p className="text-xs sm:text-sm">
                       Kami yang berbahagia <br /> Keluarga Besar
                     </p>

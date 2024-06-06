@@ -4,15 +4,15 @@ import React from "react";
 export const GiftSection = () => {
     return (
         <>
-            <div className="mx-auto bg-white py-20">
+            <div className="mx-auto bg-white/30 py-20">
                 <div className="container px-5 mx-auto flex flex-col justify-center items-center gap-5">
-                    <div className="flex flex-col gap-2 justify-center items-center sm:w-2/5">
+                    <div className="flex flex-col gap-5 justify-center items-center w-11/12 sm:w-2/5">
                         <h1 className="text-2xl font-playfair font-semibold text-amber-800">
                             Hadiah Pernikahan
                         </h1>
-                        <p className="text-sm text-center font-raleway text-slate-600 tracking-widest">
+                        <p className="text-xs sm:text-sm text-center font-raleway text-slate-600 tracking-widest">
                             Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin
-                            memberikan tanda kasih kepada kami, dapat melalu rekening di bawah
+                            memberikan hadiah dapat melalu rekening di bawah
                             ini.
                         </p>
                     </div>
@@ -41,12 +41,12 @@ export const GiftSection = () => {
                             <div class="pt-6 w-full">
                                 <div class="flex justify-between">
                                     <div>
-                                        <p class="font-light text-xs">Valid</p>
-                                        <p class="font-medium tracking-wider text-sm">11/15</p>
+                                        <p class="font-light text-xs">Diterima sampai</p>
+                                        <p class="font-medium tracking-wider text-sm">10 Juli 2024</p>
                                     </div>
-                                    <div>
-                                        <p class="font-light text-xs">Expiry</p>
-                                        <p class="font-medium tracking-wider text-sm">03/25</p>
+                                    <div className="text-right">
+                                        <p class="font-light text-xs">Tertanda</p>
+                                        <p class="font-medium tracking-wider text-sm">Ary & Nanda</p>
                                     </div>
                                 </div>
                             </div>
