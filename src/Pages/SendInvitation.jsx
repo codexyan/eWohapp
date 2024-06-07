@@ -224,9 +224,9 @@ export default function SendInvitationPage() {
               </div>
 
               {/* Greeting */}
-              <div className="mx-auto border py-16 bg-amber-100">
-                <div className="container mx-auto text-center border">
-                  <p className="w-10/12 sm:w-3/5 text-center font-semibold mx-auto text-sm sm:text-lg">
+              <div className="mx-auto border py-16 bg-hero-pattern2 bg-cover bg-center">
+                <div className="container mx-auto text-center h-full w-fit bg-slate-500 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 backdrop-saturate-100 backdrop-contrast-100 py-5 rounded-none sm:rounded-xl shadow-xl">
+                  <p className="w-10/12 sm:w-3/5 text-center font-playfair mx-auto text-white text-xs tracking-wide sm:text-base">
                     Merupakan suatu kebahagiaan bagi kami, apabila
                     Bapak/lbu/Saudara/i berkenan hadir & memberikan doa restu
                     kepada kami.
@@ -331,8 +331,8 @@ export default function SendInvitationPage() {
               {/* Time Count Down */}
               <div className="container mx-auto">
                 <div className="flex flex-col items-center justify-center gap-5 py-10 mx-5 my-16 bg-right bg-no-repeat bg-cover shadow-sm bg-countdown sm:bg-center rounded-3xl sm:mx-12 sm:gap-9">
-                  <div className="text-[#C08261] font-italianno text-3xl font-semibold">
-                    <h1>Menuju Akad</h1>
+                  <div className="text-[#C08261] font-italianno text-3xl font-normal">
+                    <h1>Waktu Menuju Akad</h1>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-5">
@@ -370,10 +370,69 @@ export default function SendInvitationPage() {
                 </div>
               </div>
 
-              {/* Photo Gallery */}
-
               <GiftSection />
               <WishesMessages />
+
+              {/* Photo Gallery */}
+              <div className="mx-auto bg-gradient-to-b from-[#fff8c8] to-[#fcf5ec]/90 h-fit w-full shadow-md">
+                <div className="text-center py-10 w-8/12 mx-auto flex gap-3 flex-col justify-center items-center">
+                  <h1 className="text-center text-sm">
+                    It is He Allah who created you from one soul and created
+                    from it its mate, that he may find comfort in her.
+                  </h1>
+                  <p className="text-xs">- QS Al A'raf: 189 -</p>
+                </div>
+                <div className="sm:container sm:mx-auto grid gap-2 sm:gap-5 grid-cols-2 sm:grid-cols-3 mx-2">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-12.png?alt=media&token=946caf75-1fe7-45bd-bab5-2ab52a4cdd30"
+                    alt="Collection Image 12"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-11.png?alt=media&token=793d2d83-d803-476b-b2ad-327c4fed4cc2"
+                    alt="Collection Image 11"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-10.png?alt=media&token=cc62c086-b1e5-4893-a774-b99f233cb908"
+                    alt="Collection Image 10"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-8.png?alt=media&token=fc406e39-9cd9-4dc8-8bfa-c700c1c3e1ea"
+                    alt="Collection Image 8"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-9.png?alt=media&token=bf6f42cb-86c6-48b3-9e12-1bb68e4aaea7"
+                    alt="Collection Image 9"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-7.png?alt=media&token=88e6f6eb-17c0-42e0-8867-e6dea1a827a0"
+                    alt="Collection Image 7"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-6.png?alt=media&token=a27cf0ba-9090-474f-bb28-ff7545456ff5"
+                    alt="Collection Image 6"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-5.png?alt=media&token=9b800592-411c-4fd6-9766-eca6265f1fe1"
+                    alt="Collection Image 5"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-4.png?alt=media&token=8c913c2d-eee2-400d-9120-2fd521fd3c98"
+                    alt="Collection Image 4"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-3.png?alt=media&token=234c275a-def2-4db7-8dd0-ae654c7a1220"
+                    alt="Collection Image 3"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-2.png?alt=media&token=0562462f-1e18-41ba-b427-fc22ed1e0b34"
+                    alt="Collection Image 2"
+                  />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/collection-1.png?alt=media&token=f515f74e-97de-4eaf-904a-f8b47649eecf"
+                    alt="Collection Image 1"
+                  />
+                </div>
+              </div>
 
               {/* Closing */}
               <div className="mx-auto bg-closing bg-bottom bg-no-repeat bg-cover sm:h-[1024px]">
