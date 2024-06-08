@@ -4,7 +4,7 @@ import React from "react";
 export const GiftSection = () => {
     return (
         <>
-            <div className="mx-auto bg-white/30 py-20">
+            <div className="mx-auto bg-white/30 py-20" data-aos="fade-zoom-in">
                 <div className="container px-5 mx-auto flex flex-col justify-center items-center gap-5">
                     <div className="flex flex-col gap-5 justify-center items-center w-11/12 sm:w-2/5">
                         <h1 className="text-2xl font-playfair font-semibold text-amber-800">
@@ -16,7 +16,9 @@ export const GiftSection = () => {
                             ini.
                         </p>
                     </div>
-                    <div class="w-86 sm:w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+                    <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" class="w-86 sm:w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
                         <img
                             class="object-cover w-full h-full rounded-xl"
                             src="https://i.imgur.com/kGkSg1v.png"
