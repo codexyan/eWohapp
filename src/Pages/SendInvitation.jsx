@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // Icons
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 // Icons
 import { SlLocationPin } from "react-icons/sl";
 import { WishesMessages } from "../components/organisms/WishesMessages";
 import { GiftSection } from "../components/organisms/Gift";
+import { useRef } from "react";
 
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
@@ -21,6 +21,26 @@ export default function SendInvitationPage() {
     minutes: 0,
     seconds: 0,
   });
+
+  // music
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  }, []);
+
+  const toggleAudio = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   // Countdown
   useEffect(() => {
@@ -236,7 +256,7 @@ export default function SendInvitationPage() {
               {/* Greeting */}
               <div
                 className="mx-auto py-16 bg-hero-pattern2 bg-cover bg-center"
-                data-aos="zoom-in"
+                data-aos="zoom-in" data-aos-duration="2500"
               >
                 <div
                   className="container mx-auto text-center h-full w-fit bg-slate-500 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 backdrop-saturate-100 backdrop-contrast-100 py-5 rounded-none sm:rounded-xl shadow-xl"
@@ -257,6 +277,7 @@ export default function SendInvitationPage() {
                 className="container mx-auto py-16 flex flex-col gap-8"
                 data-aos="fade-up"
                 data-aos-anchor-placement="center-bottom"
+                data-aos-duration="3000"
               >
                 <div className="text-center">
                   <h1 className="text-xl font-semibold text-amber-900 sm:text-3xl font-base font-playfair">
@@ -351,7 +372,7 @@ export default function SendInvitationPage() {
               </div>
 
               {/* Time Count Down */}
-              <div className="container mx-auto" data-aos="zoom-in">
+              <div className="container mx-auto" data-aos="zoom-in" data-aos-duration="2000">
                 <div className="flex flex-col items-center justify-center gap-5 py-10 mx-5 my-16 bg-right bg-no-repeat bg-cover shadow-sm bg-countdown-1 sm:bg-center rounded-3xl sm:mx-12 sm:gap-9">
                   <div className="text-[#C08261] font-italianno text-3xl font-normal">
                     <h1>Waktu Menuju Akad</h1>
@@ -494,6 +515,7 @@ export default function SendInvitationPage() {
               <div
                 className="mx-auto bg-closing bg-bottom bg-no-repeat bg-cover sm:h-[1024px]"
                 data-aos="zoom-in-down"
+                data-aos-duration="3000"
               >
                 <div className="container mx-auto h-full flex flex-col justify-between items-center">
                   <div className="pt-32 sm:pt-32 flex flex-col items-center justify-center">
@@ -518,13 +540,27 @@ export default function SendInvitationPage() {
 
             {/* <Footer /> */}
             <div className="footer text-center py-5 bg-black">
-              <p className="text-sm font-semibold text-white">
+              <p className="text-xs font-semibold text-white">
                 Copyright ©2024 Created with ❤️ by ewohku
               </p>
             </div>
 
-            <div id="audio-tag" className="fixed mx-2 bottom-5 right-0 left-0 text-white p-2 rounded flex justify-end items-center">
-              <a href="#" className="text-2xl font-bold bg-amber-900 w-10 h-10 rounded-full flex justify-center items-center shadow-lg shadow-yellow-300">II</a>
+            <div
+              id="audio-tag"
+              className="fixed mx-2 bottom-5 right-0 left-0 text-white p-2 rounded flex justify-end items-center"
+            >
+              <audio
+                ref={audioRef}
+                src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                autoPlay
+                loop
+              ></audio>
+              <button
+                onClick={toggleAudio}
+                className="text-2xl font-bold bg-amber-900 w-10 h-10 rounded-full flex justify-center items-center shadow-lg shadow-yellow-300"
+              >
+                {isPlaying ? "II" : "I>"}
+              </button>
             </div>
           </div>
         )}
