@@ -86,7 +86,7 @@ const DashboardPage = () => {
             </button>
             <Link
               to="/invitation/nandary"
-              className="flex items-center gap-2 px-4 bg-white border rounded text-sm hover:bg-slate-100"
+              className="flex items-center gap-2 px-4 text-sm bg-white border rounded hover:bg-slate-100"
             >
               <LuSend />
               Lihat Undangan
@@ -127,7 +127,7 @@ const DashboardPage = () => {
                         to={`/invitation/nandary/?to=${encodeURIComponent(
                           visitor.name
                         )}`}
-                        className="px-3 py-1 text-white bg-blue-500 rounded hover:bg-blue-800"
+                        className="px-5 py-3 text-white bg-blue-500 rounded hover:bg-blue-800"
                       >
                         Preview
                       </Link>

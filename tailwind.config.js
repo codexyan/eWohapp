@@ -24,6 +24,15 @@ export default {
         logos:
           "url('https://qmpirqfxudgdyiqlcqvj.supabase.co/storage/v1/object/sign/images-ewoh/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMtZXdvaC9sb2dvLnBuZyIsImlhdCI6MTcxNjQzMjE5OSwiZXhwIjoxNzQ3OTY4MTk5fQ.vFPWkOjlCOREKmDbB5968l_Hhyia41Hb13EngHwJOYg&t=2024-05-23T02%3A43%3A20.135Z')",
       },
+      keyframes: {
+        blink: {
+          '0%, 100%': { boxShadow: '0 0 10px 2px rgba(255, 255, 0, 0)' },
+          '50%': { boxShadow: '0 0 10px 2px rgba(255, 255, 0, 1)' },
+        },
+      },
+      animation: {
+        blink: 'blink 5s infinite',
+      }
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
