@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import LottieComponent from "../lottie.comp";
 
 export const BannerHero = () => {
   const playerRef = useRef(null);
@@ -9,25 +9,22 @@ export const BannerHero = () => {
       playerRef.current.play();
     }
   }, []);
+
+  // Lottie Animations
+  const url1 =
+    "https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/LottieFiles%2Fheart.json?alt=media&token=c3eb61a9-5bdc-4a6b-aced-5c438fecb049";
+  const width = 100;
+  const height = 100;
+
   return (
-    <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center sm:min-h-[960px] pb-20">
+    <div className="bg-hero-pattern3 bg-cover bg-no-repeat bg-center sm:min-h-[960px] pb-20 relative">
       <div
         data-aos="fade-up"
         data-aos-duration="3000"
-        className="relative flex flex-col items-center justify-center gap-5 mx-auto bg-bottom bg-cover h-svh bg-header"
+        className="flex flex-col items-center justify-center gap-5 mx-auto bg-bottom bg-cover h-svh bg-header"
       >
-        <div className="absolute top-0 left-0 right-0 flex items-center juscetify-center">
-          <Player
-            onEvent={(event) => {
-              if (event === "load") playerRef.current.play();
-            }}
-            ref={playerRef}
-            autoplay={false}
-            loop={true}
-            controls={true}
-            src="/lottie/v0/b/projectewoh.appspot.com/o/LottieFiles%2Fheart.json?alt=media&token=c3eb61a9-5bdc-4a6b-aced-5c438fecb049"
-            style={{ height: "100px", width: "380px" }}
-          ></Player>
+        <div className="absolute top-16">
+          <LottieComponent url={url1} width={width} height={height} />
         </div>
         <div className="flex flex-col items-center justify-center h-fit">
           <h1 className="font-bold text-amber-600 font-righteous">
