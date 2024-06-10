@@ -29,8 +29,8 @@ export default function SendInvitationPage() {
 
   // Lottie Animations
   const animationData = lottieAnimations.loading;
-  const width = 50;
-  const height = 50;
+  const width = 150;
+  const height = 150;
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function SendInvitationPage() {
         {/* Loading Screen */}
         {currentState === "loading" && (
           <div className="flex items-center justify-center min-h-screen">
-            ....
+            <LottieComponent animationData={animationData} width={width} height={height} />
           </div>
         )}
 

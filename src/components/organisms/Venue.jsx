@@ -71,7 +71,7 @@ export const Venue = () => {
               Daerah Istimewa Yogyakarta
             </p>
             <Link
-              to="#"
+              to="https://maps.app.goo.gl/3xtmwxBfWmRbgKKSA"
               className="w-2/3 py-4 mt-5 font-bold text-center text-white transition-transform rounded-full bg-amber-900 sm:w-1/3 hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
               <CiLocationArrow1 className="inline mr-2 text-2xl font-bold" />
@@ -114,7 +114,7 @@ export const Venue = () => {
               Daerah Istimewa Yogyakarta
             </p>
             <Link
-              to="#"
+              to="https://maps.app.goo.gl/3xtmwxBfWmRbgKKSA"
               className="w-2/3 py-4 mt-5 font-bold text-center text-white transition-transform rounded-full bg-amber-900 sm:w-1/3 hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
               <CiLocationArrow1 className="inline mr-2 text-2xl font-bold" />
