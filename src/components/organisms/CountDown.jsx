@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SlCalender } from "react-icons/sl";
 
 export const CountDown = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -35,8 +36,8 @@ export const CountDown = () => {
 
   const googleCalenderLink = () => {
     const title = encodeURIComponent("Ary & Fernanda's Wedding");
-    const start = encodeURIComponent("2024-06-30T09:00:00");
-    const end = encodeURIComponent("2024-06-30T10:00:00");
+    const start = encodeURIComponent("20240630T090000Z");
+    const end = encodeURIComponent("20240630T100000Z");
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}`;
     return url;
   };
@@ -84,8 +85,9 @@ export const CountDown = () => {
           </div>
           <Link
             to={googleCalenderLink()}
-            className="text-amber-100 py-4 font-raleway bg-[#C08261] rounded-full px-10 text-sm shadow-sm font-bold"
+            className="text-amber-100 py-4 font-raleway bg-[#C08261] rounded-full px-10 text-sm shadow-sm font-bold flex justify-center items-center gap-3"
           >
+            <SlCalender className="text-2xl font-bold" />
             Simpan Tanggal
           </Link>
         </div>
