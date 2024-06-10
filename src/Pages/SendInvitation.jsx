@@ -12,6 +12,9 @@ import { Closing } from "../components/organisms/Closing";
 import { BannerHero } from "../components/organisms/BannerHero";
 import { AudioPlay } from "../components/molecules/AudioPlay";
 
+import lottieAnimations from "../lottieAnimation";
+import LottieComponent from "../components/LottieComponent";
+
 export default function SendInvitationPage() {
   const [searchParams] = useSearchParams();
   const guestName = searchParams.get("to");
@@ -21,8 +24,13 @@ export default function SendInvitationPage() {
     setCurrentState("loading");
     setTimeout(() => {
       setCurrentState("main");
-    }, 2000); // 2 detik jeda loading
+    }, 3000); // 2 detik jeda loading
   };
+
+  // Lottie Animations
+  const animationData = lottieAnimations.loading;
+  const width = 50;
+  const height = 50;
 
   return (
     <>
@@ -63,7 +71,7 @@ export default function SendInvitationPage() {
         {/* Loading Screen */}
         {currentState === "loading" && (
           <div className="flex items-center justify-center min-h-screen">
-            <div className="loader">Loading...</div>
+            ....
           </div>
         )}
 

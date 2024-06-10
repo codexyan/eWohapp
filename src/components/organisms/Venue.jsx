@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Player } from "@lottiefiles/react-lottie-player";
+import { CiLocationArrow1 } from "react-icons/ci";
+import LottieComponent from "../LottieComponent";
+import lottieAnimations from "../../lottieAnimation";
 
 export const Venue = () => {
   const playerRef = useRef(null);
@@ -10,6 +12,11 @@ export const Venue = () => {
       playerRef.current.play();
     }
   }, []);
+
+  // Lottie Animations
+  const animationData = lottieAnimations.location;
+  const width = 50;
+  const height = 50;
 
   return (
     <>
@@ -30,17 +37,11 @@ export const Venue = () => {
         >
           {/* Event 1 */}
           <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-[2000px] shadow-xl">
-            <Player
-              onEvent={(event) => {
-                if (event === "load") playerRef.current.play();
-              }}
-              ref={playerRef}
-              autoplay={false}
-              loop={true}
-              controls={true}
-              src="/lottie/v0/b/projectewoh.appspot.com/o/LottieFiles%2Flocation.json?alt=media&token=c547ea9a-4fcf-41ad-99de-252f38083d9a"
-              style={{ height: "52px", width: "52px" }}
-            ></Player>
+            <LottieComponent
+              animationData={animationData}
+              width={width}
+              height={height}
+            />
             <h1 className="text-xl font-semibold sm:text-2xl font-playfair text-amber-700">
               Wedding Ceremony
             </h1>
@@ -73,22 +74,17 @@ export const Venue = () => {
               to="#"
               className="w-2/3 py-4 mt-5 font-bold text-center text-white transition-transform rounded-full bg-amber-900 sm:w-1/3 hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
+              <CiLocationArrow1 className="inline mr-2 text-2xl font-bold" />
               Lokasi
             </Link>
           </div>
           {/* Event 2 */}
           <div className="card-section bg-white/50 py-10 px-5 sm:w-full mx-auto flex justify-center items-center flex-col gap-3 rounded-t-full rounded-b-[2000px] shadow-xl">
-            <Player
-              onEvent={(event) => {
-                if (event === "load") playerRef.current.play();
-              }}
-              ref={playerRef}
-              autoplay={false}
-              loop={true}
-              controls={true}
-              src="/lottie/v0/b/projectewoh.appspot.com/o/LottieFiles%2Flocation.json?alt=media&token=c547ea9a-4fcf-41ad-99de-252f38083d9a"
-              style={{ height: "52px", width: "52px" }}
-            ></Player>
+            <LottieComponent
+              animationData={animationData}
+              width={width}
+              height={height}
+            />
             <h1 className="text-xl font-semibold sm:text-2xl font-playfair text-amber-700">
               Wedding Reception
             </h1>
@@ -121,6 +117,7 @@ export const Venue = () => {
               to="#"
               className="w-2/3 py-4 mt-5 font-bold text-center text-white transition-transform rounded-full bg-amber-900 sm:w-1/3 hover:bg-amber-950 transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
+              <CiLocationArrow1 className="inline mr-2 text-2xl font-bold" />
               Lokasi
             </Link>
           </div>

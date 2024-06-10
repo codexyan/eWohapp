@@ -22,7 +22,7 @@ export const CoupleHero = () => {
         data-aos-anchor-placement="top-center"
       >
         <div className="flex flex-col items-center justify-center gap-5">
-          <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200"></div>
+          <div className="bg-pa bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200" data-aos="fade-up" data-aos-duration="3000"></div>
           <div>
             <h1 className="text-3xl font-italianno text-amber-600">
               Ary Sulistyo
@@ -41,7 +41,7 @@ export const CoupleHero = () => {
           <h1 className="text-3xl font-bold font-playfair text-amber-700">&</h1>
         </div>
         <div className="flex flex-col items-center justify-center gap-5">
-          <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200"></div>
+          <div className="bg-pi bg-cover bg-no-repeat bg-center w-[300px] h-[400px] rounded-full ring ring-amber-200" data-aos="fade-up" data-aos-duration="3000"></div>
           <div>
             <h1 className="text-3xl font-italianno text-amber-600">
               Fernanda Destalia Yusuf

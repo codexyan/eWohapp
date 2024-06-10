@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import LottieComponent from "../lottie.comp";
+import LottieComponent from "../LottieComponent";
+import lottieAnimations from "../../lottieAnimation";
 
 export const BannerHero = () => {
   const playerRef = useRef(null);
@@ -11,8 +12,7 @@ export const BannerHero = () => {
   }, []);
 
   // Lottie Animations
-  const url1 =
-    "https://firebasestorage.googleapis.com/v0/b/projectewoh.appspot.com/o/LottieFiles%2Fheart.json?alt=media&token=c3eb61a9-5bdc-4a6b-aced-5c438fecb049";
+  const animationData = lottieAnimations.heart;
   const width = 100;
   const height = 100;
 
@@ -24,7 +24,7 @@ export const BannerHero = () => {
         className="flex flex-col items-center justify-center gap-5 mx-auto bg-bottom bg-cover h-svh bg-header"
       >
         <div className="absolute top-16">
-          <LottieComponent url={url1} width={width} height={height} />
+          <LottieComponent animationData={animationData} width={width} height={height} />
         </div>
         <div className="flex flex-col items-center justify-center h-fit">
           <h1 className="font-bold text-amber-600 font-righteous">
