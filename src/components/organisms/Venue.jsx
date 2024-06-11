@@ -102,7 +102,7 @@ export const Venue = () => {
             <div className="flex flex-col items-center justify-center gap-0 date">
               <h1 className="text-lg font-poppins text-slate-600">Juni 2024</h1>
               <h1 className="text-sm font-poppins sm:text-md text-slate-600">
-                13:00 - 14.00 WIB
+                13:00 - 15.00 WIB
               </h1>
             </div>
             <hr className=" h-0.3 bg-slate-300 w-1/3" />

@@ -4,8 +4,8 @@ import supabase from "../supabaseClient";
 
 import { IoMdAdd } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
-import NavbarDashboard from "../components/organisms/NavbarDashboard";
 import { Button } from "@mui/material";
+import NavbarDashboard from "../components/organisms/NavbarDashboard";
 
 const DashboardPage = () => {
   // State untuk menampilkan daftar tamu
@@ -68,6 +68,40 @@ const DashboardPage = () => {
     fetchVisitors();
   };
 
+  const formatNameForUrl = (name) => {
+    return encodeURIComponent(name).replace(/%20/g, "+");
+  };
+
+  const handleSendInvitation = (visitor) => {
+    const { name, phonenumber } = visitor;
+    const formattedName = formatNameForUrl(name);
+    const invitationLink = `https://ewohapp.vercel.app/invitation/nandary/?to=${formattedName}`;
+    const message = `
+Kepada Yth.
+Bapak/Ibu/Saudara/i
+${name}
+_______
+
+_Bismillahirrahmanirrahim. Assalamualaikum warahmatullahi wabarakatuh, salam sejahtera bagi kita semua_
+
+Dengan memohon rahmat dan ridho Allah Subhannahu Wa Ta’ala dan tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu Saudara/i, untuk menghadiri acara pernikahan kami
+
+Berikut link undangan pernikahan ini kami sertakan:
+
+${invitationLink}
+(disarankan menggunakan browser chrome/safari)
+
+Terima Kasih
+_Wassalamualaikum Warahmatullahi Wabarakatuh_
+
+Hormat Kami
+*Ary & Nanda*
+_______
+`.trim();
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+62${phonenumber}&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <>
       <NavbarDashboard />
@@ -124,19 +158,19 @@ const DashboardPage = () => {
                         Hapus
                       </Button>
                       <Link
-                        to={`/invitation/nandary/?to=${encodeURIComponent(
+                        to={`/invitation/nandary/?to=${formatNameForUrl(
                           visitor.name
                         )}`}
                         className="px-5 py-3 text-white bg-blue-500 rounded hover:bg-blue-800"
                       >
                         Preview
                       </Link>
-                      <Link
-                        to=""
+                      <button
+                        onClick={() => handleSendInvitation(visitor)}
                         className="px-3 py-1 text-white bg-orange-500 rounded hover:bg-orange-800"
                       >
                         Kirim Undangan
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 ))}
